@@ -1,0 +1,3121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Grovia — Sell digital products, earn as an affiliate, anywhere in Africa</title>
+<meta name="description" content="Grovia is the affiliate marketplace for digital products across Africa. Creators sell ebooks, courses and templates; affiliates earn commission sharing them. Get paid via Flutterwave in your local currency." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://groviaio.vercel.app/" />
+<meta name="theme-color" content="#F7FAF0" />
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn, Slack, Telegram…) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Grovia" />
+<meta property="og:url" content="https://groviaio.vercel.app/" />
+<meta property="og:title" content="Grovia — Sell digital products, earn as an affiliate, anywhere in Africa" />
+<meta property="og:description" content="Grovia is the affiliate marketplace for digital products across Africa. Creators sell ebooks, courses and templates; affiliates earn commission sharing them. Get paid via Flutterwave in your local currency." />
+<meta property="og:image" content="https://groviaio.vercel.app/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Grovia — sell digital products, earn as an affiliate" />
+<meta property="og:locale" content="en_NG" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Grovia — Sell digital products, earn as an affiliate, anywhere in Africa" />
+<meta name="twitter:description" content="Creators sell ebooks, courses and templates. Affiliates earn commission sharing them. Get paid via Flutterwave in your local currency." />
+<meta name="twitter:image" content="https://groviaio.vercel.app/og-image.png" />
+<meta name="twitter:image:alt" content="Grovia — sell digital products, earn as an affiliate" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Grovia",
+  "url": "https://groviaio.vercel.app/",
+  "logo": "https://groviaio.vercel.app/og-image.png",
+  "description": "The affiliate marketplace for digital products across Africa. Creators sell ebooks, courses and templates; affiliates earn commission sharing them."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Grovia",
+  "url": "https://groviaio.vercel.app/"
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" href="/favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<style>
+  :root {
+    --bg: #F7FAF0; --surface: #FFFFFF; --surface-soft: #F1F6E8; --dark: #12210A;
+    --text-primary: #14210A; --text-secondary: #607057; --text-muted: #87927F; --text-inverse: #F7FAF0;
+    --brand: #639922; --brand-hover: #4F7E18; --brand-light: #EAF3DE; --brand-deep: #27500A;
+    --danger: #B3261E; --danger-light: #FBDADA; --warn: #8A5A00; --warn-light: #FBE8C8;
+    --border: rgba(20, 33, 10, 0.10);
+    --shadow-sm: 0 4px 12px rgba(20, 33, 10, 0.06);
+    --shadow-md: 0 12px 32px rgba(20, 33, 10, 0.10);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text-primary); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 0 20px; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } .reveal { opacity: 1 !important; transform: none !important; } }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .hero-badge, .hero-title, .hero-lede, .hero-ctas, .hero-mockup { opacity: 0; transform: translateY(14px); animation: heroIn 0.7s cubic-bezier(.22,.61,.36,1) forwards; }
+  .hero-badge { animation-delay: 0.02s; } .hero-title { animation-delay: 0.10s; } .hero-lede { animation-delay: 0.18s; } .hero-ctas { animation-delay: 0.26s; } .hero-mockup { animation-delay: 0.36s; }
+  @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-badge, .hero-title, .hero-lede, .hero-ctas, .hero-mockup { animation: none; opacity: 1; transform: none; } }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 46px; padding: 0 20px; border-radius: 12px; font-size: 15px; font-weight: 600; border: none; cursor: pointer; transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; font-family: inherit; }
+  .btn:active { transform: scale(0.97); }
+  .btn:focus-visible { outline: 2px solid var(--brand-deep); outline-offset: 2px; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-primary { background: var(--brand); color: var(--text-inverse); }
+  .btn-primary:hover { background: var(--brand-hover); }
+  .btn-outline { background: var(--surface); color: var(--text-primary); border: 1.5px solid var(--border); }
+  .btn-ghost { background: var(--brand-light); color: var(--brand-deep); }
+  .btn-wide { width: 100%; }
+
+  header.nav { position: sticky; top: 0; z-index: 30; padding-top: calc(var(--safe-top) + 14px); padding-bottom: 14px; background: rgba(247,250,240,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; cursor: pointer; }
+  .brand svg.mark { width: 26px; height: 26px; }
+  .nav-links { display: none; }
+  .nav-right { display: flex; align-items: center; gap: 8px; }
+  .nav-cta-text { font-size: 14px; font-weight: 600; color: var(--text-secondary); padding: 10px 4px; min-height: 44px; display: flex; align-items: center; }
+  .menu-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; }
+  .mobile-menu { display: none; flex-direction: column; gap: 2px; padding: 10px 0 4px; border-top: 1px solid var(--border); margin-top: 12px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a, .mobile-menu button { padding: 12px 4px; font-size: 15px; font-weight: 500; color: var(--text-primary); min-height: 44px; display: flex; align-items: center; width: 100%; text-align: left; background: none; border: none; cursor: pointer; font-family: inherit; }
+  .nav-badge { font-size: 10.5px; font-weight: 700; padding: 1px 6px; border-radius: 999px; margin-left: 5px; vertical-align: middle; }
+  .nav-badge.active { background: var(--brand-light); color: var(--brand-deep); }
+  .nav-badge.grace { background: var(--warn-light); color: var(--warn); }
+
+  @media (min-width: 760px) {
+    .wrap { max-width: 680px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 14.5px; font-weight: 500; color: var(--text-secondary); }
+    .nav-links a { transition: color 0.15s ease; }
+    .nav-links a:hover { color: var(--brand-deep); }
+    .menu-btn { display: none; }
+  }
+
+  .hero { padding: 40px 0 8px; text-align: center; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--brand-light); color: var(--brand-deep); font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 999px; margin-bottom: 18px; }
+  .hero h1 { font-size: 32px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 14px; }
+  .hero p.lede { font-size: 16px; color: var(--text-secondary); margin: 0 auto 24px; max-width: 34ch; }
+  .hero-ctas { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+  .mockup { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-md); padding: 20px; text-align: left; max-width: 340px; margin: 0 auto; }
+  .mockup-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .mockup-brand { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; }
+  .mockup-brand svg { width: 18px; height: 18px; }
+  .mockup-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 0 rgba(99,153,34,0.5); animation: pulse 2.2s ease-out infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(99,153,34,0.45); } 70% { box-shadow: 0 0 0 7px rgba(99,153,34,0); } 100% { box-shadow: 0 0 0 0 rgba(99,153,34,0); } }
+  .mockup-stat-label { font-size: 12.5px; color: var(--text-muted); margin: 0 0 4px; }
+  .mockup-stat { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; }
+  .mockup-bars { display: flex; align-items: flex-end; gap: 6px; height: 56px; margin-bottom: 16px; }
+  .mockup-bars i { flex: 1; background: var(--brand-light); border-radius: 4px; transform: scaleY(0); transform-origin: bottom; animation: growBar 0.6s cubic-bezier(.22,.61,.36,1) forwards; animation-delay: 0.6s; }
+  .mockup-bars i.up { background: var(--brand); }
+  .mockup-bars i:nth-child(1) { animation-delay: 0.60s; } .mockup-bars i:nth-child(2) { animation-delay: 0.66s; }
+  .mockup-bars i:nth-child(3) { animation-delay: 0.72s; } .mockup-bars i:nth-child(4) { animation-delay: 0.78s; }
+  .mockup-bars i:nth-child(5) { animation-delay: 0.84s; } .mockup-bars i:nth-child(6) { animation-delay: 0.90s; }
+  @keyframes growBar { to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) { .mockup-bars i { animation: none; transform: none; } .mockup-dot { animation: none; } }
+  .mockup-cta { display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--surface-soft); color: var(--brand-deep); font-size: 13.5px; font-weight: 600; padding: 10px; border-radius: 10px; }
+
+  section.section { padding: 48px 0 8px; }
+  .eyebrow { font-size: 13px; font-weight: 700; color: var(--brand-deep); letter-spacing: 0.02em; margin: 0 0 8px; }
+  h2.section-title { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 22px; }
+  .paths { display: flex; flex-direction: column; gap: 14px; }
+  .path-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 24px 22px; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .path-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .path-card:active { transform: translateY(0) scale(0.99); }
+  .path-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .path-card.creator .path-icon { background: var(--brand-light); color: var(--brand-deep); }
+  .path-card.affiliate .path-icon { background: #E7EFFB; color: #1E4C8C; }
+  .path-photo { width: 44px; height: 44px; border-radius: 12px; object-fit: cover; margin-bottom: 14px; margin-left: 10px; float: right; }
+  .path-title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .path-desc { font-size: 14.5px; color: var(--text-secondary); margin: 0 0 14px; }
+  .path-example { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; background: var(--surface-soft); color: var(--text-secondary); padding: 6px 10px; border-radius: 999px; margin-bottom: 16px; }
+  .path-card a.btn::after { content: "→"; margin-left: 2px; transition: transform 0.15s ease; }
+  .path-card a.btn:hover::after { transform: translateX(3px); }
+
+  .spotlight-card { position: relative; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-md); min-height: 420px; }
+  .spotlight-card img { width: 100%; height: 420px; object-fit: cover; transform: scale(1.06); transition: transform 4.5s cubic-bezier(.22,.61,.36,1); }
+  .spotlight-card.in-view img { transform: scale(1); }
+  .spotlight-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 24px calc(28px + var(--safe-bottom, 0px)); background: linear-gradient(180deg, rgba(18,33,10,0) 28%, rgba(15,26,8,0.55) 65%, rgba(11,20,6,0.9) 100%); }
+  .spotlight-tag { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; background: rgba(247,250,240,0.16); backdrop-filter: blur(6px); color: #F7FAF0; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; margin-bottom: 14px; border: 1px solid rgba(247,250,240,0.2); }
+  .spotlight-overlay h2 { color: #fff; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.28; margin: 0 0 10px; max-width: 26ch; }
+  .spotlight-overlay p { color: #D8E4CB; font-size: 14px; margin: 0 0 16px; }
+  .spotlight-stats { display: flex; gap: 18px; }
+  .spotlight-stat b { display: block; color: #fff; font-size: 17px; font-weight: 700; }
+  .spotlight-stat span { color: #B9CBA9; font-size: 12px; }
+
+  .steps-grid { display: flex; flex-direction: column; gap: 0; }
+  .step-row { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .step-row:last-child { border-bottom: none; }
+  .step-num { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--brand-light); color: var(--brand-deep); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .step-row h3 { font-size: 15.5px; font-weight: 600; margin: 0 0 3px; }
+  .step-row p { font-size: 14px; color: var(--text-secondary); margin: 0; }
+
+  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .product-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .product-cover { height: 84px; display: flex; align-items: center; justify-content: center; color: var(--text-inverse); }
+  .product-cover.g1 { background: linear-gradient(135deg, #639922, #97C459); }
+  .product-cover.g2 { background: linear-gradient(135deg, #27500A, #639922); }
+  .product-cover.g3 { background: linear-gradient(135deg, #1E4C8C, #4F7E9E); }
+  .product-cover.g4 { background: linear-gradient(135deg, #7A5A1E, #C4934F); }
+  .product-body { padding: 12px 12px 14px; }
+  .product-name { font-size: 13.5px; font-weight: 600; margin: 0 0 4px; }
+  .product-store { font-size: 11.5px; color: var(--text-muted); margin: 0 0 6px; }
+  .product-card[data-nav] { cursor: pointer; }
+  .product-meta { display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+  .buy-cover { height: 200px; border-radius: 18px; background-size: cover; background-position: center; margin-bottom: 4px; }
+  .buy-cover-fallback { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #639922, #97C459); color: var(--text-inverse); }
+  .buy-price-row { display: flex; align-items: center; margin: 4px 0 18px; }
+  .buy-price { font-size: 24px; font-weight: 800; color: var(--brand-deep); }
+  .order-paid-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--brand-light); color: var(--brand-deep); font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: 999px; }
+  .product-row { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow-sm); margin-bottom: 10px; }
+  .product-row-cover { width: 52px; height: 52px; border-radius: 10px; flex-shrink: 0; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: var(--text-inverse); }
+  .product-row-cover.g1 { background: linear-gradient(135deg, #639922, #97C459); }
+  .product-row-cover.g2 { background: linear-gradient(135deg, #27500A, #639922); }
+  .product-row-cover.g3 { background: linear-gradient(135deg, #1E4C8C, #4F7E9E); }
+  .product-row-cover.g4 { background: linear-gradient(135deg, #7A5A1E, #C4934F); }
+  .product-row-body { flex: 1; min-width: 0; }
+  .product-row-name { font-size: 14px; font-weight: 600; margin: 0 0 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .product-row-meta { font-size: 12px; color: var(--text-muted); }
+  .product-row-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .icon-btn { background: var(--brand-light); color: var(--brand-deep); border: none; border-radius: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .icon-btn.danger { background: var(--danger-light); color: var(--danger); }
+  .wd-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; box-shadow: var(--shadow-sm); margin-bottom: 10px; }
+  .wd-amount { font-size: 14px; font-weight: 700; margin: 0 0 2px; }
+  .wd-date { font-size: 12px; color: var(--text-muted); }
+  .wd-badge { font-size: 11.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; flex-shrink: 0; text-transform: capitalize; }
+  .wd-badge.requested { background: var(--warn-light); color: var(--warn); }
+  .wd-badge.approved { background: var(--brand-light); color: var(--brand-deep); }
+  .wd-badge.paid { background: var(--brand-light); color: var(--brand-deep); }
+  .wd-badge.rejected { background: var(--danger-light); color: var(--danger); }
+  .acct-sub-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .acct-sub-label { font-size: 14px; font-weight: 700; margin: 0 0 2px; }
+  .acct-sub-status { font-size: 12.5px; color: var(--text-muted); margin: 0; }
+  .pe-thumbs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+  .pe-thumb { position: relative; width: 72px; height: 72px; border-radius: 12px; overflow: hidden; }
+  .pe-thumb-img { width: 100%; height: 100%; background-size: cover; background-position: center; }
+  .pe-thumb-remove { position: absolute; top: 4px; right: 4px; background: rgba(20,33,10,0.65); color: #fff; border: none; border-radius: 999px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .pe-thumb-add { border: 1.5px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-muted); cursor: pointer; background: var(--surface-soft); }
+  .pe-file-done { display: flex; align-items: center; gap: 6px; background: var(--brand-light); color: var(--brand-deep); font-size: 13px; font-weight: 600; padding: 10px 12px; border-radius: 10px; margin-bottom: 8px; }
+  .pe-file-replace { display: inline-block; font-size: 12.5px; font-weight: 600; color: var(--text-secondary); text-decoration: underline; cursor: pointer; }
+  .pe-progress { height: 8px; border-radius: 999px; background: var(--surface-soft); overflow: hidden; margin-bottom: 4px; }
+  .pe-progress-bar { height: 100%; background: var(--brand); transition: width 0.2s ease; }
+  .product-price { color: var(--text-primary); font-weight: 700; }
+  .product-comm { color: var(--brand-deep); background: var(--brand-light); padding: 2px 7px; border-radius: 999px; font-weight: 600; }
+  .get-link-btn { width: 100%; margin-top: 10px; padding: 8px 10px; font-size: 12.5px; font-weight: 700; background: var(--brand-light); color: var(--brand-deep); border: none; border-radius: 8px; cursor: pointer; }
+
+  .gallery { display: flex; gap: 12px; overflow-x: auto; padding: 4px 20px 8px; margin: 0 -20px; scroll-snap-type: x mandatory; }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery-item { flex: none; width: 148px; scroll-snap-align: start; border-radius: 16px; overflow: hidden; position: relative; box-shadow: var(--shadow-sm); }
+  .gallery-item img { width: 100%; height: 176px; object-fit: cover; transition: transform 0.4s ease; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item span { position: absolute; left: 10px; bottom: 10px; right: 10px; color: var(--text-inverse); font-size: 12.5px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+  .gallery-item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
+
+  .why-grid { display: flex; flex-direction: column; gap: 12px; }
+  .why-item { display: flex; align-items: flex-start; gap: 12px; }
+  .why-item svg { flex: none; color: var(--brand); margin-top: 2px; width: 20px; height: 20px; }
+  .why-item p { margin: 0; font-size: 14.5px; color: var(--text-secondary); }
+  .why-item strong { color: var(--text-primary); }
+
+  .payout-card { background: var(--dark); color: var(--text-inverse); border-radius: 20px; padding: 24px 22px; }
+  .payout-title { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 700; margin: 0 0 12px; }
+  .flags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .flag-chip { background: rgba(247,250,240,0.1); border: 1px solid rgba(247,250,240,0.15); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+  .payout-card p.desc { font-size: 14px; color: #C9D9BC; margin: 0 0 6px; }
+  .payout-card p.fine { font-size: 12px; color: #8FA381; margin: 0; }
+
+  .closing { background: linear-gradient(160deg, var(--brand-deep), var(--dark)); border-radius: 24px; padding: 40px 22px; margin: 44px 0 0; text-align: center; }
+  .closing h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; color: var(--text-inverse); margin: 0 0 20px; }
+  .closing-ctas { display: flex; flex-direction: column; gap: 10px; }
+  .closing .btn-primary { background: var(--brand); }
+  .closing .btn-outline { background: rgba(247,250,240,0.08); border-color: rgba(247,250,240,0.3); color: var(--text-inverse); }
+  .divider { height: 1px; background: var(--border); margin: 44px 0; }
+
+  footer { background: var(--dark); color: var(--text-inverse); padding: 32px 0 calc(28px + var(--safe-bottom)); margin-top: 48px; }
+  footer .brand { color: var(--text-inverse); margin-bottom: 14px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 14px 18px; font-size: 13.5px; color: #C9D9BC; margin-bottom: 20px; }
+  footer .links a { transition: color 0.15s ease; }
+  footer .links a:hover { color: #fff; }
+  footer .social { display: flex; gap: 16px; margin-bottom: 20px; }
+  footer .social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background 0.15s ease; }
+  footer .social a:hover { background: rgba(255,255,255,0.16); }
+  footer .fine { font-size: 12.5px; color: #8FA381; }
+
+  #app { min-height: 50vh; }
+  .skeleton-text { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
+  .back-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13.5px; font-weight: 600; color: var(--text-secondary); margin-bottom: 14px; cursor: pointer; }
+  .back-link:hover { color: var(--brand-deep); }
+  .page-title { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin: 32px 0 4px; }
+  .page-sub { font-size: 14px; color: var(--text-secondary); margin: 0 0 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-sm); padding: 24px 22px; }
+
+  .auth-wrap { display: flex; align-items: center; justify-content: center; padding: 48px 20px 60px; min-height: 60vh; }
+  .auth-card { width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-md); padding: 32px 28px; }
+  .auth-logo { display: flex; justify-content: center; margin-bottom: 18px; }
+  .auth-title { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; text-align: center; margin: 0 0 6px; }
+  .auth-sub { font-size: 14px; color: var(--text-secondary); text-align: center; margin: 0 0 26px; }
+  .role-note { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; background: var(--brand-light); color: var(--brand-deep); padding: 8px 12px; border-radius: 10px; margin-bottom: 20px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 6px; }
+  .field input, .field textarea { width: 100%; padding: 11px 13px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 15px; font-family: inherit; color: var(--text-primary); background: var(--surface); resize: vertical; }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; border-color: var(--brand); }
+  .field-hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+  .field-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .field-row label { margin-bottom: 0; }
+  .forgot-link { font-size: 13px; font-weight: 600; color: var(--brand-deep); }
+  .forgot-link:hover { text-decoration: underline; }
+  .auth-footer { text-align: center; font-size: 14px; color: var(--text-secondary); margin-top: 22px; }
+  .auth-footer a { color: var(--brand-deep); font-weight: 600; }
+  .auth-footer a:hover { text-decoration: underline; }
+  .fine-print { font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 16px; }
+  .alert { display: none; font-size: 13.5px; border-radius: 10px; padding: 10px 12px; margin-bottom: 16px; }
+  .alert.error { display: block; background: var(--danger-light); color: var(--danger); }
+  .alert.info { display: block; background: var(--brand-light); color: var(--brand-deep); }
+  .state-icon { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 24px; }
+  .state-icon.ok { background: var(--brand-light); color: var(--brand-deep); }
+  .state-icon.bad { background: var(--danger-light); color: var(--danger); }
+
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow-sm); }
+  .stat-label { font-size: 12.5px; color: var(--text-muted); margin: 0 0 4px; }
+  .stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+  .link-list { display: flex; flex-direction: column; gap: 10px; }
+  .link-card { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-sm); transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: pointer; }
+  .link-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .link-icon { flex: none; width: 38px; height: 38px; border-radius: 10px; background: var(--brand-light); color: var(--brand-deep); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+  .link-title { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+  .link-desc { font-size: 13px; color: var(--text-secondary); margin: 0; }
+  .link-arrow { margin-left: auto; color: var(--text-muted); }
+  .section-heading { font-size: 15px; font-weight: 700; margin: 28px 0 12px; }
+  .gate-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-md); padding: 28px 24px; text-align: center; }
+  .gate-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--brand-light); color: var(--brand-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 26px; }
+  .gate-card h2 { font-size: 20px; font-weight: 800; margin: 0 0 8px; }
+  .gate-card p { font-size: 14px; color: var(--text-secondary); margin: 0 0 20px; max-width: 32ch; margin-left: auto; margin-right: auto; }
+  .gate-price { font-size: 30px; font-weight: 800; margin: 0 0 4px; }
+  .gate-price span { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+  .banner { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; padding: 12px 14px; border-radius: 12px; margin-bottom: 20px; }
+  .banner.warn { background: var(--warn-light); color: var(--warn); }
+  .banner a { text-decoration: underline; color: inherit; cursor: pointer; }
+  .store-link-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--brand-light); color: var(--brand-deep); border-radius: 12px; padding: 10px 14px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+  .copy-btn { background: none; border: none; color: inherit; font-weight: 700; cursor: pointer; font-size: 13px; font-family: inherit; }
+  .char-count { font-size: 12px; color: var(--text-muted); text-align: right; margin-top: 4px; }
+
+  .coming-soon { text-align: center; padding: 80px 20px 60px; }
+  .coming-soon .gate-icon { margin: 0 auto 16px; }
+
+  @media (min-width: 760px) {
+    .hero h1 { font-size: 46px; }
+    .hero-ctas { flex-direction: row; justify-content: center; }
+    .paths { flex-direction: row; }
+    .path-card { flex: 1; }
+    .product-grid { grid-template-columns: repeat(4, 1fr); }
+    .why-grid { flex-direction: row; flex-wrap: wrap; }
+    .why-item { flex: 1 1 40%; }
+    .spotlight-card { min-height: 460px; }
+    .spotlight-card img { height: 460px; }
+    .spotlight-overlay { padding: 40px; }
+    .spotlight-overlay h2 { font-size: 28px; }
+    .closing-ctas { flex-direction: row; justify-content: center; }
+    .closing-ctas .btn { min-width: 220px; }
+    .stat-grid, .link-list, .auth-card { max-width: 560px; }
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none"><symbol id="lg" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="15" fill="#639922"></circle>
+  <path d="M16 22 V13 M16 13 C16 9 13 8 10 8 C10 12 12 14 16 13 M16 15 C16 12 19 11 21 11 C21 14 19 16 16 15" fill="none" stroke="#EAF3DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+</symbol></svg>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-row">
+      <a class="brand" aria-label="Grovia home" id="brand-home">
+        <svg class="mark" viewBox="0 0 32 32" role="img" aria-hidden="true"><use href="#lg"></use></svg>
+        Grovia
+      </a>
+      <nav class="nav-links" id="nav-links"></nav>
+      <div class="nav-right" id="nav-right"></div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu"></nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<script>
+/* ============================================================================
+ * GROVIA — single-page app
+ * One file: markup + styles + client + router + every view built so far.
+ * ==========================================================================*/
+
+/* ---------------------------------------------------------------- API ---- */
+const GroviaAPI = (function () {
+  'use strict';
+
+  // TODO: replace with your deployed Apps Script Web App URL.
+  const API_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+  const SESSION_KEY = 'grovia_session';
+  const CHUNK_BYTES = 5 * 1024 * 1024;
+
+  async function apiGet() {
+    const res = await fetch(API_URL, { method: 'GET' });
+    if (!res.ok) throw new Error('network_error_' + res.status);
+    return res.json();
+  }
+
+  async function apiPost(action, payload) {
+    const body = JSON.stringify(Object.assign({ action: action }, payload || {}));
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: body,
+    });
+    if (!res.ok) throw new Error('network_error_' + res.status);
+    return res.json();
+  }
+
+  let _dbCache = null;
+
+  async function getDb(force) {
+    if (_dbCache && !force) return _dbCache;
+    _dbCache = await apiGet();
+    return _dbCache;
+  }
+
+  async function pushDb(mutator, maxRetries) {
+    maxRetries = typeof maxRetries === 'number' ? maxRetries : 3;
+    let db = await getDb(true);
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      const draft = JSON.parse(JSON.stringify(db));
+      mutator(draft);
+      const result = await apiPost('write', { version: draft.version, data: draft });
+      if (result.error === 'version_conflict') {
+        db = result.current;
+        _dbCache = db;
+        continue;
+      }
+      if (result.error) throw new Error(result.error);
+      _dbCache = result.data;
+      return result.data;
+    }
+    throw new Error('write_failed_after_retries');
+  }
+
+  function getSession() {
+    try {
+      const raw = localStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function setSession(user) { localStorage.setItem(SESSION_KEY, JSON.stringify(user)); }
+  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+  function isLoggedIn() { return !!getSession(); }
+
+  async function refreshSession() {
+    const session = getSession();
+    if (!session) return null;
+    const db = await getDb(true);
+    const fresh = db.users.find(function (u) { return u.id === session.id; });
+    if (fresh) setSession(fresh);
+    return fresh || null;
+  }
+
+  async function sha256Hex(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  async function login(email, password) {
+    const clientHash = await sha256Hex(password);
+    const result = await apiPost('login', { email: email, password: clientHash });
+    if (result.error) throw new Error(result.error);
+    setSession(result);
+    return result;
+  }
+
+  function logout() { clearSession(); }
+
+  async function requestPasswordReset(email) {
+    return apiPost('requestPasswordReset', { email: email });
+  }
+
+  async function resetPassword(token, newPassword) {
+    const clientHash = await sha256Hex(newPassword);
+    return apiPost('resetPassword', { token: token, newPassword: clientHash });
+  }
+
+  async function signup(opts) {
+    const name = opts.name, email = opts.email, password = opts.password;
+    const referredBy = opts.referredBy || null;
+
+    const db = await getDb(true);
+    const taken = db.users.some(function (u) { return u.email.toLowerCase() === email.toLowerCase(); });
+    if (taken) throw new Error('email_already_registered');
+
+    const clientHash = await sha256Hex(password);
+    const salt = crypto.randomUUID();
+    const passwordHash = await sha256Hex(clientHash + salt);
+    const id = crypto.randomUUID();
+
+    const newUser = {
+      id: id, name: name, email: email, salt: salt, passwordHash: passwordHash,
+      referralCode: id.slice(0, 8), referredBy: referredBy,
+      creatorSub: { active: false, expiresAt: null, graceUntil: null },
+      affiliateSub: { active: false, expiresAt: null, graceUntil: null },
+      creatorWallet: 0, affiliateWallet: 0, referralWallet: 0, roleId: null,
+      createdAt: new Date().toISOString(),
+    };
+
+    await pushDb(function (draft) { draft.users.push(newUser); });
+
+    const publicUser = Object.assign({}, newUser);
+    delete publicUser.salt;
+    delete publicUser.passwordHash;
+    setSession(publicUser);
+    return publicUser;
+  }
+
+  function blobToBase64(blob) {
+    return new Promise(function (resolve, reject) {
+      const reader = new FileReader();
+      reader.onload = function () { resolve(reader.result.split(',')[1]); };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  }
+
+  async function uploadFile(file, onProgress) {
+    onProgress = onProgress || function () {};
+    const totalChunks = Math.max(1, Math.ceil(file.size / CHUNK_BYTES));
+    const start = await apiPost('startUpload', { filename: file.name, mimeType: file.type, totalChunks: totalChunks });
+    if (start.error) throw new Error(start.error);
+    const uploadId = start.uploadId;
+    for (let i = 0; i < totalChunks; i++) {
+      const blob = file.slice(i * CHUNK_BYTES, (i + 1) * CHUNK_BYTES);
+      const base64Piece = await blobToBase64(blob);
+      const chunkResult = await apiPost('uploadChunk', { uploadId: uploadId, chunkIndex: i, base64Piece: base64Piece });
+      if (chunkResult.error) throw new Error(chunkResult.error);
+      onProgress((i + 1) / totalChunks);
+    }
+    const final = await apiPost('finalizeUpload', { uploadId: uploadId });
+    if (final.error) throw new Error(final.error);
+    return final.fileId;
+  }
+
+  async function uploadImage(file) {
+    const base64 = await blobToBase64(file);
+    const result = await apiPost('uploadImage', { base64: base64, filename: file.name, mimeType: file.type });
+    if (result.error) throw new Error(result.error);
+    return result.url;
+  }
+
+  async function getDownloadLink(orderId, buyerEmail) {
+    return apiPost('getDownloadLink', { orderId: orderId, buyerEmail: buyerEmail });
+  }
+
+  async function verifyPayment(txRef, targetType, targetId) {
+    return apiPost('verifyPayment', { txRef: txRef, targetType: targetType, targetId: targetId });
+  }
+
+  async function getBanks(country) {
+    return apiPost('getBanks', { country: country });
+  }
+  async function resolveAccount(opts) {
+    return apiPost('resolveAccount', { country: opts.country, accountNumber: opts.accountNumber, accountBank: opts.accountBank });
+  }
+  async function getPayoutConfig(country) {
+    return apiPost('getPayoutConfig', { country: country });
+  }
+
+  function isSubActive(sub) {
+    if (!sub) return false;
+    if (sub.active) return true;
+    if (sub.graceUntil && Date.now() < new Date(sub.graceUntil).getTime()) return true;
+    return false;
+  }
+  function isSubExpired(sub) {
+    if (!sub) return true;
+    if (sub.active) return false;
+    if (!sub.graceUntil) return true;
+    return Date.now() >= new Date(sub.graceUntil).getTime();
+  }
+  function hasPermission(user, db, permission) {
+    if (!user || !user.roleId || !db) return false;
+    const role = db.roles.find(function (r) { return r.id === user.roleId; });
+    if (!role) return false;
+    if (role.name === 'Super Admin') return true;
+    return role.permissions.indexOf(permission) !== -1;
+  }
+
+  return {
+    getDb: getDb, pushDb: pushDb,
+    getSession: getSession, setSession: setSession, clearSession: clearSession, isLoggedIn: isLoggedIn, refreshSession: refreshSession,
+    login: login, logout: logout, signup: signup, requestPasswordReset: requestPasswordReset, resetPassword: resetPassword,
+    uploadFile: uploadFile, uploadImage: uploadImage, getDownloadLink: getDownloadLink, verifyPayment: verifyPayment,
+    getBanks: getBanks, resolveAccount: resolveAccount, getPayoutConfig: getPayoutConfig,
+    isSubActive: isSubActive, isSubExpired: isSubExpired, hasPermission: hasPermission, sha256Hex: sha256Hex,
+  };
+})();
+
+/* ---------------------------------------------------------------- utils -- */
+const FLW_PUBLIC_KEY = 'FLWPUBK_TEST-REPLACE_ME-X'; // TODO: your Flutterwave public key — used by every checkout flow (subscriptions, product purchases)
+
+function cssUrlSafe(url) {
+  // Escapes a URL for safe interpolation inside a CSS url('...') value embedded in an HTML style attribute.
+  return escapeHtml(encodeURI(url)).replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29');
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+function formatDate(iso) {
+  if (!iso) return '';
+  try { return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }); }
+  catch (e) { return iso; }
+}
+function logoSvg(size) {
+  size = size || 40;
+  return '<svg viewBox="0 0 32 32" width="' + size + '" height="' + size + '" role="img" aria-hidden="true"><use href="#lg"></use></svg>';
+}
+
+/* --------------------------------------------------------------- router -- */
+let currentRoute = '/';
+let currentParams = {};
+
+const routes = [
+  { path: '/', view: viewLanding },
+  { path: '/catalog', view: viewCatalog },
+  { path: '/store/:id', view: viewStore },
+  { path: '/product/:id', view: viewProduct },
+  { path: '/order-status', view: viewOrderStatus },
+  { path: '/login', view: viewLogin },
+  { path: '/signup', view: viewSignup },
+  { path: '/forgot-password', view: viewForgotPassword },
+  { path: '/reset-password', view: viewResetPassword },
+  { path: '/creator/dashboard', view: viewCreatorDashboard, auth: true },
+  { path: '/creator/store', view: viewCreatorStoreSettings, auth: true },
+  { path: '/creator/products', view: viewCreatorProducts, auth: true },
+  { path: '/creator/product/new', view: viewCreatorProductEdit, auth: true },
+  { path: '/creator/product/:id', view: viewCreatorProductEdit, auth: true },
+  { path: '/creator/wallet', view: viewCreatorWallet, auth: true },
+  { path: '/affiliate/dashboard', view: viewAffiliateDashboard, auth: true },
+  { path: '/affiliate/browse', view: viewAffiliateBrowse, auth: true },
+  { path: '/affiliate/wallet', view: viewAffiliateWallet, auth: true },
+  { path: '/referrals', view: viewReferrals, auth: true },
+  { path: '/welcome', view: viewWelcome, auth: true },
+  { path: '/account', view: viewAccount, auth: true },
+];
+
+function parseHash() {
+  let h = window.location.hash;
+  if (!h) h = '#/';
+  if (h.charAt(0) !== '#' || h.charAt(1) !== '/') return null; // plain in-page anchor — not an app route
+  h = h.slice(1);
+  const parts = h.split('?');
+  const path = parts[0];
+  const queryString = parts[1];
+  const params = {};
+  if (queryString) new URLSearchParams(queryString).forEach(function (v, k) { params[k] = v; });
+  return { path: path || '/', params: params };
+}
+
+function go(path) { window.location.hash = '#' + path; }
+function matchRoute(path) {
+  const segs = path.split('/').filter(Boolean);
+  for (let i = 0; i < routes.length; i++) {
+    const route = routes[i];
+    const routeSegs = route.path.split('/').filter(Boolean);
+    if (routeSegs.length !== segs.length) continue;
+    const routeParams = {};
+    let matched = true;
+    for (let j = 0; j < routeSegs.length; j++) {
+      if (routeSegs[j].charAt(0) === ':') {
+        routeParams[routeSegs[j].slice(1)] = decodeURIComponent(segs[j]);
+      } else if (routeSegs[j] !== segs[j]) {
+        matched = false;
+        break;
+      }
+    }
+    if (matched) return { route: route, params: routeParams };
+  }
+  return null;
+}
+
+async function renderRoute() {
+  const parsed = parseHash();
+  if (!parsed) return; // let the browser handle plain #anchor scrolling
+
+  const path = parsed.path;
+  const match = matchRoute(path);
+  const params = match ? Object.assign({}, parsed.params, match.params) : parsed.params;
+
+  if (match && match.route.auth && !GroviaAPI.isLoggedIn()) {
+    go('/login?next=' + encodeURIComponent(path));
+    return;
+  }
+
+  currentRoute = path;
+  currentParams = params;
+  renderHeader();
+
+  const app = document.getElementById('app');
+
+  if (!match) {
+    app.innerHTML = viewComingSoon(path);
+    window.scrollTo(0, 0);
+    if (window.lucide) lucide.createIcons();
+    return;
+  }
+
+  app.innerHTML = '<div class="wrap"><p class="skeleton-text">Loading…</p></div>';
+  try {
+    const result = await match.route.view(params);
+    if (result && result.html) {
+      app.innerHTML = result.html;
+      if (result.after) result.after();
+    }
+  } catch (err) {
+    console.error(err);
+    app.innerHTML = '<div class="wrap"><p class="skeleton-text">Something went wrong loading this page. <a href="#/" style="color:var(--brand-deep);font-weight:600;">Go home</a></p></div>';
+  }
+  if (window.lucide) lucide.createIcons();
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener('hashchange', renderRoute);
+window.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('brand-home').addEventListener('click', function () { go('/'); });
+  renderRoute();
+});
+
+/* ----------------------------------------------------------------- nav --- */
+function subBadge(sub) {
+  if (!sub) return '';
+  if (GroviaAPI.isSubActive(sub) && sub.active) return '<span class="nav-badge active">active</span>';
+  if (GroviaAPI.isSubActive(sub)) return '<span class="nav-badge grace">grace</span>';
+  return '';
+}
+
+function renderHeader() {
+  const user = GroviaAPI.getSession();
+  const isLanding = currentRoute === '/';
+  const navLinksEl = document.getElementById('nav-links');
+  const navRightEl = document.getElementById('nav-right');
+  const mobileEl = document.getElementById('mobile-menu');
+
+  let centerLinks = '<a href="#/catalog">Browse products</a>';
+  if (isLanding) {
+    centerLinks += '<a href="#how-it-works">How it works</a><a href="#for-creators">For creators</a><a href="#for-affiliates">For affiliates</a>';
+  } else if (user) {
+    centerLinks += '<a href="#/creator/dashboard">Creator' + subBadge(user.creatorSub) + '</a>';
+    centerLinks += '<a href="#/affiliate/dashboard">Affiliate' + subBadge(user.affiliateSub) + '</a>';
+    if (user.roleId) centerLinks += '<a href="admin.html">Admin</a>';
+  }
+  navLinksEl.innerHTML = centerLinks;
+
+  let rightHtml, mobileHtml;
+  if (!user) {
+    rightHtml =
+      '<a href="#/login" class="nav-cta-text">Log in</a>' +
+      '<a href="#/signup" class="btn btn-primary">Get started</a>' +
+      '<button class="menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" style="width:20px;height:20px;"></i></button>';
+    mobileHtml = centerLinks + '<a href="#/login">Log in</a><a href="#/signup">Sign up</a>';
+  } else {
+    rightHtml =
+      '<a href="#/account" class="nav-cta-text">' + escapeHtml((user.name || 'Account').split(' ')[0]) + '</a>' +
+      '<button class="btn btn-ghost" id="logout-btn" type="button">Log out</button>' +
+      '<button class="menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" style="width:20px;height:20px;"></i></button>';
+    mobileHtml = centerLinks + '<a href="#/account">Account settings</a><button type="button" id="logout-btn-mobile">Log out</button>';
+  }
+  navRightEl.innerHTML = rightHtml;
+  mobileEl.innerHTML = mobileHtml;
+
+  const menuBtn = document.getElementById('menu-toggle');
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      const open = mobileEl.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  mobileEl.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileEl.classList.remove('open');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  function doLogout() {
+    GroviaAPI.logout();
+    mobileEl.classList.remove('open');
+    go('/');
+  }
+  const logoutBtn = document.getElementById('logout-btn');
+  const logoutBtnMobile = document.getElementById('logout-btn-mobile');
+  if (logoutBtn) logoutBtn.addEventListener('click', doLogout);
+  if (logoutBtnMobile) logoutBtnMobile.addEventListener('click', doLogout);
+
+  if (window.lucide) lucide.createIcons();
+}
+
+/* ------------------------------------------------------------ coming soon */
+function viewComingSoon(path) {
+  return (
+    '<div class="wrap"><div class="coming-soon">' +
+    '<div class="gate-icon">🚧</div>' +
+    '<h1 class="auth-title">Coming soon</h1>' +
+    '<p class="auth-sub">This part of Grovia (<code>' + escapeHtml(path) + '</code>) isn\u2019t built yet.</p>' +
+    '<a href="#/" class="btn btn-primary">Back home</a>' +
+    '</div></div>'
+  );
+}
+
+/* ================================================================ VIEWS = */
+
+/* ---------------------------------------------------------------- landing */
+/* ---------------------------------------------------------------- catalog */
+async function viewCatalog() {
+  let db;
+  try {
+    db = await GroviaAPI.getDb(true);
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load the catalog. Refresh to try again.</p></div>' };
+  }
+
+  if (db.platformSettings && db.platformSettings.publicCatalogEnabled === false) {
+    return {
+      html: '<div class="wrap"><h1 class="page-title">Browse products</h1><p class="skeleton-text">The public catalog isn\u2019t available right now.</p></div>',
+    };
+  }
+
+  const products = db.products.slice().sort(function (a, b) {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
+  let bodyHtml;
+  if (!products.length) {
+    bodyHtml = '<p class="skeleton-text">No products yet \u2014 check back soon.</p>';
+  } else {
+    bodyHtml =
+      '<div class="product-grid">' +
+      products
+        .map(function (p, i) {
+          const store = db.stores.find(function (s) { return s.id === p.storeId; });
+          const cover = p.images && p.images[0]
+            ? '<div class="product-cover" style="background-image:url(\'' + cssUrlSafe(p.images[0]) + '\');background-size:cover;background-position:center;"></div>'
+            : '<div class="product-cover g' + ((i % 4) + 1) + '"><i data-lucide="package" style="width:26px;height:26px;"></i></div>';
+          const price = typeof p.price === 'number' ? p.price : Number(p.price) || 0;
+          return (
+            '<div class="product-card" data-nav="/product/' + p.id + '">' + cover +
+            '<div class="product-body">' +
+            '<p class="product-name">' + escapeHtml(p.name) + '</p>' +
+            '<p class="product-store">' + escapeHtml(store ? store.name : 'Grovia store') + '</p>' +
+            '<div class="product-meta"><span class="product-price">\u20a6' + price.toLocaleString() + '</span>' +
+            '<span class="product-comm">' + (p.commissionRate || 0) + '%</span></div>' +
+            '</div></div>'
+          );
+        })
+        .join('') +
+      '</div>';
+  }
+
+  return {
+    html:
+      '<div class="wrap"><h1 class="page-title">Browse products</h1>' +
+      '<p class="page-sub">Ebooks, courses, and templates from creators across Africa.</p>' +
+      bodyHtml + '</div>',
+    after: function () {
+      document.querySelectorAll('.product-card[data-nav]').forEach(function (el) {
+        el.addEventListener('click', function () { go(el.getAttribute('data-nav')); });
+      });
+    },
+  };
+}
+
+/* ------------------------------------------------------------------ store */
+async function viewStore(params) {
+  const storeId = params.id;
+  let db;
+  try {
+    db = await GroviaAPI.getDb(true);
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load this store. Refresh to try again.</p></div>' };
+  }
+
+  const store = db.stores.find(function (s) { return s.id === storeId; });
+  if (!store) {
+    return {
+      html:
+        '<div class="wrap"><h1 class="page-title">Store not found</h1>' +
+        '<p class="page-sub">This store link may be out of date.</p>' +
+        '<a href="#/catalog" class="btn btn-primary">Browse products</a></div>',
+    };
+  }
+
+  const products = db.products
+    .filter(function (p) { return p.storeId === store.id; })
+    .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+
+  let productsHtml;
+  if (!products.length) {
+    productsHtml = '<p class="skeleton-text">This store hasn\u2019t listed any products yet.</p>';
+  } else {
+    productsHtml =
+      '<div class="product-grid">' +
+      products
+        .map(function (p, i) {
+          const cover = p.images && p.images[0]
+            ? '<div class="product-cover" style="background-image:url(\'' + cssUrlSafe(p.images[0]) + '\');background-size:cover;background-position:center;"></div>'
+            : '<div class="product-cover g' + ((i % 4) + 1) + '"><i data-lucide="package" style="width:26px;height:26px;"></i></div>';
+          const price = typeof p.price === 'number' ? p.price : Number(p.price) || 0;
+          return (
+            '<div class="product-card" data-nav="/product/' + p.id + '">' + cover +
+            '<div class="product-body">' +
+            '<p class="product-name">' + escapeHtml(p.name) + '</p>' +
+            '<div class="product-meta"><span class="product-price">\u20a6' + price.toLocaleString() + '</span>' +
+            '<span class="product-comm">' + (p.commissionRate || 0) + '%</span></div>' +
+            '</div></div>'
+          );
+        })
+        .join('') +
+      '</div>';
+  }
+
+  return {
+    html:
+      '<div class="wrap"><a class="back-link" id="store-view-back-link">\u2190 Browse products</a>' +
+      '<h1 class="page-title">' + escapeHtml(store.name) + '</h1>' +
+      (store.description ? '<p class="page-sub">' + escapeHtml(store.description) + '</p>' : '') +
+      productsHtml + '</div>',
+    after: function () {
+      const back = document.getElementById('store-view-back-link');
+      if (back) back.addEventListener('click', function () { go('/catalog'); });
+      document.querySelectorAll('.product-card[data-nav]').forEach(function (el) {
+        el.addEventListener('click', function () { go(el.getAttribute('data-nav')); });
+      });
+    },
+  };
+}
+
+/* ---------------------------------------------------------------- product */
+async function viewProduct(params) {
+  const productId = params.id;
+  const refCode = params.ref || null;
+
+  let db;
+  try {
+    db = await GroviaAPI.getDb(true);
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load this product. Refresh to try again.</p></div>' };
+  }
+
+  const product = db.products.find(function (p) { return p.id === productId; });
+  if (!product) {
+    return {
+      html:
+        '<div class="wrap"><h1 class="page-title">Product not found</h1>' +
+        '<p class="page-sub">This product link may be out of date.</p>' +
+        '<a href="#/catalog" class="btn btn-primary">Browse products</a></div>',
+    };
+  }
+
+  const store = db.stores.find(function (s) { return s.id === product.storeId; });
+  const price = typeof product.price === 'number' ? product.price : Number(product.price) || 0;
+
+  const cover = product.images && product.images[0]
+    ? '<div class="buy-cover" style="background-image:url(\'' + cssUrlSafe(product.images[0]) + '\');"></div>'
+    : '<div class="buy-cover buy-cover-fallback"><i data-lucide="package" style="width:34px;height:34px;"></i></div>';
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="product-back-link">\u2190 ' +
+      (store ? escapeHtml(store.name) : 'Browse products') + '</a>' +
+      cover +
+      '<h1 class="page-title" style="margin-top:16px;">' + escapeHtml(product.name) + '</h1>' +
+      (store ? '<p class="product-store" style="margin-bottom:10px;">by ' + escapeHtml(store.name) + '</p>' : '') +
+      (product.description ? '<p class="page-sub">' + escapeHtml(product.description) + '</p>' : '') +
+      '<div class="buy-price-row"><span class="buy-price">\u20a6' + price.toLocaleString() + '</span></div>' +
+      inner + '</div>'
+    );
+  }
+
+  function wireBack() {
+    const back = document.getElementById('product-back-link');
+    if (back) back.addEventListener('click', function () { go(store ? '/store/' + store.id : '/catalog'); });
+  }
+
+  const formHtml =
+    '<div class="card"><div id="buy-alert" class="alert"></div>' +
+    '<form id="buy-form" novalidate>' +
+    '<div class="field"><label for="buyer-name">Full name</label><input type="text" id="buyer-name" required /></div>' +
+    '<div class="field"><label for="buyer-email">Email</label><input type="email" id="buyer-email" required /></div>' +
+    (refCode ? '<p class="field-hint">Purchasing via a shared affiliate link.</p>' : '') +
+    '<button type="submit" class="btn btn-primary btn-wide" id="buy-submit-btn">Buy for \u20a6' + price.toLocaleString() + '</button>' +
+    '</form></div>';
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('buy-submit-btn');
+    const name = document.getElementById('buyer-name').value.trim();
+    const email = document.getElementById('buyer-email').value.trim();
+    function showAlert(msg) {
+      const el = document.getElementById('buy-alert');
+      el.textContent = msg; el.className = 'alert error';
+    }
+    document.getElementById('buy-alert').className = 'alert';
+    if (!name) { showAlert('Enter your full name.'); return; }
+    if (!email || email.indexOf('@') === -1) { showAlert('Enter a valid email.'); return; }
+
+    btn.disabled = true; btn.textContent = 'Preparing checkout\u2026';
+
+    const orderId = crypto.randomUUID();
+    const txRef = 'grovia_order_' + orderId;
+
+    try {
+      await GroviaAPI.pushDb(function (draft) {
+        draft.orders.push({
+          id: orderId, productId: product.id,
+          buyerName: name, buyerEmail: email,
+          basePrice: price, affiliateRef: refCode || null,
+          platformCut: 0, affiliateCommission: 0, creatorEarning: 0,
+          status: 'pending', flutterwaveTxRef: txRef,
+          createdAt: new Date().toISOString(), paidAt: null,
+        });
+      });
+    } catch (err) {
+      showAlert('Couldn\u2019t start checkout. Please try again.');
+      btn.disabled = false; btn.textContent = 'Buy for \u20a6' + price.toLocaleString();
+      return;
+    }
+
+    if (typeof FlutterwaveCheckout !== 'function') {
+      showAlert('Payments are unavailable right now. Please try again shortly.');
+      btn.disabled = false; btn.textContent = 'Buy for \u20a6' + price.toLocaleString();
+      return;
+    }
+
+    FlutterwaveCheckout({
+      public_key: FLW_PUBLIC_KEY,
+      tx_ref: txRef,
+      amount: price,
+      currency: 'NGN',
+      payment_options: 'card, mobilemoney, ussd',
+      customer: { email: email, name: name },
+      customizations: { title: 'Grovia \u2014 ' + product.name, description: 'Purchase of ' + product.name },
+      callback: function (response) {
+        go('/order-status?orderId=' + encodeURIComponent(orderId) + '&txRef=' + encodeURIComponent(response.transaction_id || response.tx_ref));
+      },
+      onclose: function () {
+        const btnAgain = document.getElementById('buy-submit-btn');
+        if (btnAgain) { btnAgain.disabled = false; btnAgain.textContent = 'Buy for \u20a6' + price.toLocaleString(); }
+      },
+    });
+  }
+
+  return {
+    html: shell(formHtml),
+    after: function () {
+      wireBack();
+      document.getElementById('buy-form').addEventListener('submit', onSubmit);
+    },
+  };
+}
+
+/* ------------------------------------------------------------ order status */
+async function viewOrderStatus(params) {
+  const orderId = params.orderId;
+  const txRef = params.txRef;
+
+  function shell(inner) {
+    return '<div class="wrap"><h1 class="page-title">Order status</h1>' + inner + '</div>';
+  }
+
+  function retryCard(message, label) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">' + message + '</p>' +
+        '<button class="btn btn-primary btn-wide" id="retry-verify-btn">' + label + '</button></div>'
+      ),
+      after: function () {
+        const btn = document.getElementById('retry-verify-btn');
+        if (btn) btn.addEventListener('click', function () { renderRoute(); });
+      },
+    };
+  }
+
+  if (!orderId || !txRef) {
+    return {
+      html: shell(
+        '<p class="skeleton-text">This page needs a valid order reference. If you just completed a purchase, check your email for a receipt.</p>' +
+        '<a href="#/catalog" class="btn btn-primary">Browse products</a>'
+      ),
+    };
+  }
+
+  let db;
+  try {
+    db = await GroviaAPI.getDb(true);
+  } catch (err) {
+    return { html: shell('<p class="skeleton-text">Couldn\u2019t load your order. Refresh to try again.</p>') };
+  }
+
+  let order = db.orders.find(function (o) { return o.id === orderId; });
+  if (!order) {
+    return {
+      html: shell(
+        '<p class="skeleton-text">We couldn\u2019t find this order.</p>' +
+        '<a href="#/catalog" class="btn btn-primary">Browse products</a>'
+      ),
+    };
+  }
+
+  if (order.status !== 'paid') {
+    try {
+      const result = await GroviaAPI.verifyPayment(txRef, 'order', orderId);
+      if (result.error) {
+        return retryCard('We couldn\u2019t confirm this payment yet. If you completed checkout, this can take a moment \u2014 try again.', 'Check again');
+      }
+      db = await GroviaAPI.getDb(true);
+      order = db.orders.find(function (o) { return o.id === orderId; });
+    } catch (err) {
+      return retryCard('Something went wrong confirming your payment.', 'Try again');
+    }
+  }
+
+  if (!order || order.status !== 'paid') {
+    return { html: shell('<p class="skeleton-text">This order hasn\u2019t been confirmed as paid yet.</p>') };
+  }
+
+  const product = db.products.find(function (p) { return p.id === order.productId; });
+  const price = typeof order.basePrice === 'number' ? order.basePrice : Number(order.basePrice) || 0;
+
+  const bodyHtml =
+    '<div class="card">' +
+    '<div class="order-paid-badge"><i data-lucide="check-circle" style="width:18px;height:18px;"></i> Payment confirmed</div>' +
+    '<p style="margin:14px 0 4px;font-size:14px;color:var(--text-secondary);">' + escapeHtml(product ? product.name : 'Your purchase') + '</p>' +
+    '<p style="margin:0 0 18px;font-size:22px;font-weight:800;color:var(--brand-deep);">\u20a6' + price.toLocaleString() + '</p>' +
+    '<div id="download-alert" class="alert"></div>' +
+    '<button class="btn btn-primary btn-wide" id="download-btn" type="button">Get my download link</button>' +
+    '</div>';
+
+  return {
+    html: shell(bodyHtml),
+    after: function () {
+      const btn = document.getElementById('download-btn');
+      if (!btn) return;
+      btn.addEventListener('click', async function () {
+        btn.disabled = true; btn.textContent = 'Preparing your link\u2026';
+        function showAlert(msg) {
+          const el = document.getElementById('download-alert');
+          if (el) { el.textContent = msg; el.className = 'alert error'; }
+        }
+        try {
+          const result = await GroviaAPI.getDownloadLink(order.id, order.buyerEmail);
+          if (result.error) {
+            showAlert('Couldn\u2019t get your download link. Contact support with your order reference.');
+            btn.disabled = false; btn.textContent = 'Get my download link';
+            return;
+          }
+          const alertEl = document.getElementById('download-alert');
+          if (alertEl) {
+            alertEl.outerHTML = '<a href="' + escapeHtml(result.url) + '" target="_blank" rel="noopener" class="btn btn-outline btn-wide" style="margin-bottom:12px;">Open download</a>';
+          }
+          btn.style.display = 'none';
+        } catch (err) {
+          showAlert('Couldn\u2019t get your download link. Contact support with your order reference.');
+          btn.disabled = false; btn.textContent = 'Get my download link';
+        }
+      });
+    },
+  };
+}
+
+function viewLanding() {
+  const html =
+    '<section class="hero wrap">' +
+    '<span class="badge hero-badge">🌱 Africa\'s digital product marketplace</span>' +
+    '<h1 class="hero-title">Turn knowledge into income.</h1>' +
+    '<p class="lede hero-lede">Sell digital products, or earn commission promoting products you believe in.</p>' +
+    '<div class="hero-ctas">' +
+    '<a href="#/signup" class="btn btn-primary btn-wide">Get started free</a>' +
+    '<a href="#/catalog" class="btn btn-outline btn-wide">Browse products</a>' +
+    '</div>' +
+    '<div class="mockup hero-mockup">' +
+    '<div class="mockup-row"><span class="mockup-brand">' + logoSvg(18) + ' Grovia</span><span class="mockup-dot" aria-hidden="true"></span></div>' +
+    '<p class="mockup-stat-label">Total earnings this month</p>' +
+    '<p class="mockup-stat">₦245,000</p>' +
+    '<div class="mockup-bars" aria-hidden="true"><i style="height:35%"></i><i style="height:55%"></i><i style="height:40%"></i><i class="up" style="height:80%"></i><i class="up" style="height:95%"></i><i style="height:60%"></i></div>' +
+    '<div class="mockup-cta"><i data-lucide="plus" style="width:14px;height:14px;"></i> Create product</div>' +
+    '</div></section>' +
+
+    '<section class="section wrap" id="choose-path">' +
+    '<p class="eyebrow reveal">Choose your path</p>' +
+    '<h2 class="section-title reveal">Two ways to grow with Grovia</h2>' +
+    '<div class="paths">' +
+    '<article class="path-card creator reveal" id="for-creators">' +
+    '<img class="path-photo" src="https://images.unsplash.com/photo-1758874384555-37d50c0ee81a?q=80&w=200&auto=format&fit=crop" alt="A creator at work" loading="lazy" />' +
+    '<div class="path-icon"><i data-lucide="store" style="width:22px;height:22px;"></i></div>' +
+    '<h3 class="path-title">Creator</h3>' +
+    '<p class="path-desc">Create once. Sell repeatedly. List an ebook, course, or template and set your own price.</p>' +
+    '<span class="path-example"><i data-lucide="package" style="width:13px;height:13px;"></i> e.g. a UI design course, ₦18,000</span>' +
+    '<a href="#/signup?role=creator" class="btn btn-ghost btn-wide">Open a store</a></article>' +
+    '<article class="path-card affiliate reveal" id="for-affiliates">' +
+    '<img class="path-photo" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=200&auto=format&fit=crop" alt="An affiliate sharing a product link" loading="lazy" />' +
+    '<div class="path-icon"><i data-lucide="share-2" style="width:22px;height:22px;"></i></div>' +
+    '<h3 class="path-title">Affiliate</h3>' +
+    '<p class="path-desc">Share products you rate with your audience and earn a commission on every sale.</p>' +
+    '<span class="path-example"><i data-lucide="link" style="width:13px;height:13px;"></i> e.g. 20% commission per referral</span>' +
+    '<a href="#/signup?role=affiliate" class="btn btn-ghost btn-wide">Start earning</a></article>' +
+    '</div></section>' +
+
+    '<section class="section wrap"><div class="spotlight-card reveal">' +
+    '<img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=900&auto=format&fit=crop" alt="Amaka Chukwu working on her laptop in Lagos" loading="lazy" />' +
+    '<div class="spotlight-overlay"><span class="spotlight-tag"><i data-lucide="quote" style="width:13px;height:13px;"></i> Creator story</span>' +
+    '<h2>My course paid for itself in the first week.</h2>' +
+    '<p>Amaka Chukwu, Lagos — sells a UI design course through her Grovia store.</p>' +
+    '<div class="spotlight-stats"><div class="spotlight-stat"><b>₦412,000</b><span>Earned in 90 days</span></div><div class="spotlight-stat"><b>36</b><span>Active affiliates</span></div></div>' +
+    '</div></div></section>' +
+
+    '<section class="section wrap" id="how-it-works">' +
+    '<p class="eyebrow reveal">How it works</p><h2 class="section-title reveal">From sign-up to your first sale</h2>' +
+    '<div class="steps-grid reveal">' +
+    '<div class="step-row"><span class="step-num">1</span><div><h3>Create your account</h3><p>Sign up as a creator, an affiliate, or both — one yearly subscription per role.</p></div></div>' +
+    '<div class="step-row"><span class="step-num">2</span><div><h3>List or share a product</h3><p>Creators upload a file and set a price and commission. Affiliates pick a product and get their link.</p></div></div>' +
+    '<div class="step-row"><span class="step-num">3</span><div><h3>Get paid securely</h3><p>Buyers pay through Flutterwave. Earnings land in your Grovia wallet automatically.</p></div></div>' +
+    '<div class="step-row"><span class="step-num">4</span><div><h3>Withdraw anytime</h3><p>Request a payout once you hit the minimum — it\'s reviewed and sent to your bank.</p></div></div>' +
+    '</div></section>' +
+
+    '<section class="section wrap"><p class="eyebrow reveal">Marketplace preview</p><h2 class="section-title reveal">Products people are already sharing</h2>' +
+    '<div class="product-grid reveal">' +
+    '<div class="product-card"><div class="product-cover g1"><i data-lucide="palette" style="width:26px;height:26px;"></i></div><div class="product-body"><p class="product-name">UI Design Masterclass</p><div class="product-meta"><span class="product-price">₦18,000</span><span class="product-comm">20%</span></div></div></div>' +
+    '<div class="product-card"><div class="product-cover g2"><i data-lucide="book-open" style="width:26px;height:26px;"></i></div><div class="product-body"><p class="product-name">Freelance Pricing Ebook</p><div class="product-meta"><span class="product-price">₦6,500</span><span class="product-comm">25%</span></div></div></div>' +
+    '<div class="product-card"><div class="product-cover g3"><i data-lucide="layout-template" style="width:26px;height:26px;"></i></div><div class="product-body"><p class="product-name">Notion CRM Template</p><div class="product-meta"><span class="product-price">₦9,000</span><span class="product-comm">30%</span></div></div></div>' +
+    '<div class="product-card"><div class="product-cover g4"><i data-lucide="mic" style="width:26px;height:26px;"></i></div><div class="product-body"><p class="product-name">Podcasting Starter Kit</p><div class="product-meta"><span class="product-price">₦12,000</span><span class="product-comm">18%</span></div></div></div>' +
+    '</div></section>' +
+
+    '<section class="section wrap"><p class="eyebrow reveal">Across the continent</p><h2 class="section-title reveal">Creators building in every corner</h2></section>' +
+    '<div class="gallery wrap reveal">' +
+    '<div class="gallery-item"><img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=400&auto=format&fit=crop" alt="Creator working in Lagos" loading="lazy" /><span>Lagos, Nigeria</span></div>' +
+    '<div class="gallery-item"><img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?q=80&w=400&auto=format&fit=crop" alt="Creator working in Nairobi" loading="lazy" /><span>Nairobi, Kenya</span></div>' +
+    '<div class="gallery-item"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=400&auto=format&fit=crop" alt="Creator working in Accra" loading="lazy" /><span>Accra, Ghana</span></div>' +
+    '<div class="gallery-item"><img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=400&auto=format&fit=crop" alt="Creator working in Cape Town" loading="lazy" /><span>Cape Town, South Africa</span></div>' +
+    '</div>' +
+
+    '<section class="section wrap" style="padding-top:40px;"><p class="eyebrow reveal">Why Grovia</p><h2 class="section-title reveal">Built for how Africa gets paid</h2>' +
+    '<div class="why-grid reveal">' +
+    '<div class="why-item"><i data-lucide="shield-check"></i><p><strong>Gated downloads.</strong> Files unlock only after a verified payment, so your work stays protected.</p></div>' +
+    '<div class="why-item"><i data-lucide="wallet"></i><p><strong>Two wallets, one account.</strong> Track creator and affiliate earnings separately, withdraw either.</p></div>' +
+    '<div class="why-item"><i data-lucide="sliders-horizontal"></i><p><strong>You set the split.</strong> Choose your own commission rate within the platform\'s guardrails.</p></div>' +
+    '<div class="why-item"><i data-lucide="clock"></i><p><strong>A grace period, not a cutoff.</strong> A short window to renew before store actions pause — nothing is deleted.</p></div>' +
+    '</div></section>' +
+
+    '<section class="section wrap"><div class="payout-card reveal">' +
+    '<p class="payout-title"><i data-lucide="banknote" style="width:20px;height:20px;"></i> Paid in your local currency</p>' +
+    '<div class="flags"><span class="flag-chip">🇳🇬 Naira</span><span class="flag-chip">🇰🇪 Shilling</span><span class="flag-chip">🇬🇭 Cedi</span><span class="flag-chip">🇿🇦 Rand</span></div>' +
+    '<p class="desc">Every payment runs through Flutterwave, so buyers check out the way they already trust — and your earnings settle to your bank without a currency detour.</p>' +
+    '<p class="fine">Withdrawals are reviewed and paid out by the Grovia team.</p>' +
+    '</div></section>' +
+
+    '<section class="wrap"><div class="closing reveal"><h2>Ready to grow with Grovia?</h2>' +
+    '<div class="closing-ctas"><a href="#/signup" class="btn btn-primary">Get started free</a><a href="#/catalog" class="btn btn-outline">Browse products</a></div>' +
+    '</div></section>' +
+
+    '<footer><div class="wrap">' +
+    '<a href="#/" class="brand" aria-label="Grovia home">' + logoSvg(26) + ' Grovia</a>' +
+    '<nav class="links"><a href="#/catalog">Browse products</a><a href="#for-creators">For creators</a><a href="#for-affiliates">For affiliates</a><a href="#/login">Log in</a><a href="#/signup">Sign up</a></nav>' +
+    '<div class="social">' +
+    '<a href="https://twitter.com/grovia" aria-label="Grovia on Twitter"><i data-lucide="twitter" style="width:16px;height:16px;"></i></a>' +
+    '<a href="https://instagram.com/grovia" aria-label="Grovia on Instagram"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>' +
+    '<a href="https://facebook.com/grovia" aria-label="Grovia on Facebook"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>' +
+    '</div><p class="fine">grow together, earn together · © <span id="footer-year"></span> Grovia</p>' +
+    '</div></footer>';
+
+  return {
+    html: html,
+    after: function () {
+      const y = document.getElementById('footer-year');
+      if (y) y.textContent = new Date().getFullYear();
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealEls = document.querySelectorAll('#app .reveal');
+      if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('in-view'); });
+      }
+    },
+  };
+}
+
+/* ------------------------------------------------------------------ login */
+function viewLogin() {
+  if (GroviaAPI.isLoggedIn()) { go(currentParams.next || '/'); return { html: '' }; }
+
+  const html =
+    '<div class="wrap"><div class="auth-wrap"><div class="auth-card">' +
+    '<div class="auth-logo">' + logoSvg() + '</div>' +
+    '<h1 class="auth-title">Welcome back</h1><p class="auth-sub">Log in to your Grovia account</p>' +
+    '<div id="form-alert" class="alert"></div>' +
+    '<form id="login-form" novalidate>' +
+    '<div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" required /></div>' +
+    '<div class="field"><div class="field-row"><label for="password">Password</label><a href="#/forgot-password" class="forgot-link">Forgot?</a></div>' +
+    '<input type="password" id="password" autocomplete="current-password" required /></div>' +
+    '<button type="submit" class="btn btn-primary btn-wide" id="submit-btn">Log in</button>' +
+    '</form><p class="auth-footer">Don\'t have an account? <a href="#/signup">Sign up</a></p>' +
+    '</div></div></div>';
+
+  return {
+    html: html,
+    after: function () {
+      function showAlert(msg, kind) {
+        const el = document.getElementById('form-alert');
+        el.textContent = msg;
+        el.className = 'alert ' + (kind || 'error');
+      }
+      document.getElementById('login-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        document.getElementById('form-alert').className = 'alert';
+        if (!email || !password) { showAlert('Enter your email and password.'); return; }
+        btn.disabled = true; btn.textContent = 'Logging in…';
+        try {
+          await GroviaAPI.login(email, password);
+          go(currentParams.next || '/');
+        } catch (err) {
+          showAlert(err.message === 'invalid_credentials' ? 'That email and password don\u2019t match. Try again.' : 'Something went wrong. Please try again.');
+          btn.disabled = false; btn.textContent = 'Log in';
+        }
+      });
+    },
+  };
+}
+
+/* ----------------------------------------------------------------- signup */
+function viewSignup() {
+  if (GroviaAPI.isLoggedIn()) { go('/'); return { html: '' }; }
+
+  const role = currentParams.role;
+  const ref = currentParams.ref;
+  const roleNote = (role === 'creator' || role === 'affiliate')
+    ? '<div class="role-note">' + (role === 'creator' ? '🌱 Signing up to open a creator store' : '🔗 Signing up to become an affiliate') + '</div>'
+    : '';
+
+  const html =
+    '<div class="wrap"><div class="auth-wrap"><div class="auth-card">' +
+    '<div class="auth-logo">' + logoSvg() + '</div>' +
+    '<h1 class="auth-title">Create your account</h1>' +
+    '<p class="auth-sub">Free to join — pay only when you\'re ready to sell or promote.</p>' +
+    roleNote +
+    '<div id="form-alert" class="alert"></div>' +
+    '<form id="signup-form" novalidate>' +
+    '<div class="field"><label for="name">Full name</label><input type="text" id="name" autocomplete="name" required /></div>' +
+    '<div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" required /></div>' +
+    '<div class="field"><label for="password">Password</label><input type="password" id="password" autocomplete="new-password" minlength="8" required /><p class="field-hint">At least 8 characters.</p></div>' +
+    '<div class="field"><label for="confirm">Confirm password</label><input type="password" id="confirm" autocomplete="new-password" required /></div>' +
+    '<button type="submit" class="btn btn-primary btn-wide" id="submit-btn">Create account</button>' +
+    '</form><p class="auth-footer">Already have an account? <a href="#/login">Log in</a></p>' +
+    '<p class="fine-print">By signing up you agree to Grovia\'s terms and privacy policy.</p>' +
+    '</div></div></div>';
+
+  return {
+    html: html,
+    after: function () {
+      function showAlert(msg, kind) {
+        const el = document.getElementById('form-alert');
+        el.textContent = msg;
+        el.className = 'alert ' + (kind || 'error');
+      }
+      document.getElementById('signup-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirm = document.getElementById('confirm').value;
+        document.getElementById('form-alert').className = 'alert';
+        if (!name || !email || !password) { showAlert('Fill in every field to continue.'); return; }
+        if (password.length < 8) { showAlert('Your password needs to be at least 8 characters.'); return; }
+        if (password !== confirm) { showAlert('Those passwords don\u2019t match.'); return; }
+        btn.disabled = true; btn.textContent = 'Creating account…';
+        try {
+          await GroviaAPI.signup({ name: name, email: email, password: password, referredBy: ref || null });
+          if (role === 'creator') go('/creator/dashboard');
+          else if (role === 'affiliate') go('/affiliate/dashboard');
+          else go('/welcome');
+        } catch (err) {
+          showAlert(err.message === 'email_already_registered' ? 'That email is already registered. Try logging in instead.' : 'Something went wrong. Please try again.');
+          btn.disabled = false; btn.textContent = 'Create account';
+        }
+      });
+    },
+  };
+}
+
+/* ------------------------------------------------------------- welcome */
+async function viewWelcome() {
+  const user = GroviaAPI.getSession();
+  const firstName = user && user.name ? escapeHtml(user.name.trim().split(' ')[0]) : '';
+
+  const html =
+    '<div class="wrap"><div class="auth-wrap"><div class="auth-card">' +
+    '<div class="auth-logo">' + logoSvg() + '</div>' +
+    '<h1 class="auth-title">Welcome' + (firstName ? ', ' + firstName : '') + '</h1>' +
+    '<p class="auth-sub">Which are you here for?</p>' +
+    '<div class="link-list">' +
+    '<div class="link-card" data-nav="/creator/dashboard">' +
+    '<span class="link-icon">\ud83c\udf31</span>' +
+    '<span><p class="link-title">Open a store</p><p class="link-desc">Sell ebooks, courses, or templates</p></span>' +
+    '<span class="link-arrow">\u2192</span></div>' +
+    '<div class="link-card" data-nav="/affiliate/dashboard">' +
+    '<span class="link-icon">\ud83d\udd17</span>' +
+    '<span><p class="link-title">Start earning</p><p class="link-desc">Promote products and earn commission</p></span>' +
+    '<span class="link-arrow">\u2192</span></div>' +
+    '</div>' +
+    '<p class="auth-footer" style="margin-top:20px;">Not sure yet? <a href="#/catalog">Browse the marketplace</a></p>' +
+    '</div></div></div>';
+
+  return {
+    html: html,
+    after: function () {
+      document.querySelectorAll('.link-card[data-nav]').forEach(function (el) {
+        el.addEventListener('click', function () { go(el.getAttribute('data-nav')); });
+      });
+    },
+  };
+}
+
+/* --------------------------------------------------------- forgot password */
+function viewForgotPassword() {
+  const html =
+    '<div class="wrap"><div class="auth-wrap"><div class="auth-card">' +
+    '<div id="form-view">' +
+    '<div class="auth-logo">' + logoSvg() + '</div>' +
+    '<h1 class="auth-title">Forgot your password?</h1><p class="auth-sub">Enter your email and we\'ll send you a reset link.</p>' +
+    '<div id="form-alert" class="alert"></div>' +
+    '<form id="reset-form" novalidate>' +
+    '<div class="field"><label for="email">Email</label><input type="email" id="email" autocomplete="email" required /></div>' +
+    '<button type="submit" class="btn btn-primary btn-wide" id="submit-btn">Send reset link</button>' +
+    '</form></div>' +
+    '<div id="success-view" style="display:none; text-align:center;">' +
+    '<div class="state-icon ok">✓</div><h1 class="auth-title">Check your email</h1>' +
+    '<p class="auth-sub" style="margin-bottom:0;">If an account exists for that address, we\'ve sent a link to reset your password. It expires in 1 hour.</p>' +
+    '</div>' +
+    '<p class="auth-footer">Remembered it? <a href="#/login">Log in</a></p>' +
+    '</div></div></div>';
+
+  return {
+    html: html,
+    after: function () {
+      document.getElementById('reset-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const email = document.getElementById('email').value.trim();
+        document.getElementById('form-alert').className = 'alert';
+        if (!email) {
+          const el = document.getElementById('form-alert');
+          el.textContent = 'Enter your email address.'; el.className = 'alert error';
+          return;
+        }
+        btn.disabled = true; btn.textContent = 'Sending…';
+        try { await GroviaAPI.requestPasswordReset(email); } catch (err) { /* uniform success shown regardless */ }
+        finally {
+          document.getElementById('form-view').style.display = 'none';
+          document.getElementById('success-view').style.display = 'block';
+        }
+      });
+    },
+  };
+}
+
+/* ---------------------------------------------------------- reset password */
+function viewResetPassword(params) {
+  const token = params.token;
+
+  const html =
+    '<div class="wrap"><div class="auth-wrap"><div class="auth-card">' +
+    '<div id="form-view" style="display:' + (token ? 'block' : 'none') + ';">' +
+    '<div class="auth-logo">' + logoSvg() + '</div>' +
+    '<h1 class="auth-title">Set a new password</h1><p class="auth-sub">Choose something you haven\'t used before.</p>' +
+    '<div id="form-alert" class="alert"></div>' +
+    '<form id="reset-form" novalidate>' +
+    '<div class="field"><label for="password">New password</label><input type="password" id="password" autocomplete="new-password" minlength="8" required /><p class="field-hint">At least 8 characters.</p></div>' +
+    '<div class="field"><label for="confirm">Confirm new password</label><input type="password" id="confirm" autocomplete="new-password" required /></div>' +
+    '<button type="submit" class="btn btn-primary btn-wide" id="submit-btn">Reset password</button>' +
+    '</form></div>' +
+    '<div id="success-view" style="display:none; text-align:center;">' +
+    '<div class="state-icon ok">✓</div><h1 class="auth-title">Password updated</h1><p class="auth-sub">You can now log in with your new password.</p>' +
+    '<a href="#/login" class="btn btn-primary btn-wide">Go to log in</a></div>' +
+    '<div id="invalid-view" style="display:' + (token ? 'none' : 'block') + '; text-align:center;">' +
+    '<div class="state-icon bad">!</div><h1 class="auth-title">Link expired</h1><p class="auth-sub">This reset link is invalid or has expired. Request a new one to continue.</p>' +
+    '<a href="#/forgot-password" class="btn btn-primary btn-wide">Request a new link</a></div>' +
+    '</div></div></div>';
+
+  return {
+    html: html,
+    after: function () {
+      function show(id) {
+        ['form-view', 'success-view', 'invalid-view'].forEach(function (v) {
+          document.getElementById(v).style.display = v === id ? 'block' : 'none';
+        });
+      }
+      const form = document.getElementById('reset-form');
+      if (!form) return;
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const password = document.getElementById('password').value;
+        const confirm = document.getElementById('confirm').value;
+        function showAlert(msg) {
+          const el = document.getElementById('form-alert');
+          el.textContent = msg; el.className = 'alert error';
+        }
+        document.getElementById('form-alert').className = 'alert';
+        if (password.length < 8) { showAlert('Your password needs to be at least 8 characters.'); return; }
+        if (password !== confirm) { showAlert('Those passwords don\u2019t match.'); return; }
+        btn.disabled = true; btn.textContent = 'Saving…';
+        try {
+          const result = await GroviaAPI.resetPassword(token, password);
+          if (result && result.error) throw new Error(result.error);
+          show('success-view');
+        } catch (err) {
+          if (err.message === 'invalid_or_expired_token') show('invalid-view');
+          else { showAlert('Something went wrong. Please try again.'); btn.disabled = false; btn.textContent = 'Reset password'; }
+        }
+      });
+    },
+  };
+}
+
+/* ------------------------------------------------------------ creator: dashboard */
+async function viewCreatorDashboard() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your dashboard. Refresh to try again.</p></div>' };
+  }
+
+  const sub = user.creatorSub;
+  const active = GroviaAPI.isSubActive(sub);
+  const inGrace = active && !sub.active;
+
+  let bodyHtml, after;
+
+  function linkCard(path, icon, title, desc) {
+    return (
+      '<div class="link-card" data-nav="' + path + '">' +
+      '<span class="link-icon">' + icon + '</span>' +
+      '<span><p class="link-title">' + escapeHtml(title) + '</p><p class="link-desc">' + escapeHtml(desc) + '</p></span>' +
+      '<span class="link-arrow">→</span></div>'
+    );
+  }
+
+  async function startSubscriptionCheckout(fee) {
+    const btn = document.getElementById('subscribe-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Preparing checkout…'; }
+    const subId = crypto.randomUUID();
+    const txRef = 'grovia_sub_' + subId;
+
+    function showGateAlert(message) {
+      const el = document.getElementById('gate-alert');
+      if (!el) return;
+      el.textContent = message; el.className = 'alert error';
+    }
+
+    try {
+      await GroviaAPI.pushDb(function (draft) {
+        draft.subscriptions.push({
+          id: subId, userId: user.id, role: 'creator', amount: fee, status: 'pending',
+          flutterwaveTxRef: txRef, createdAt: new Date().toISOString(), paidAt: null, expiresAt: null,
+        });
+      });
+    } catch (err) {
+      showGateAlert('Couldn\u2019t start checkout. Please try again.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe now'; }
+      return;
+    }
+
+    if (typeof FlutterwaveCheckout !== 'function') {
+      showGateAlert('Payments are unavailable right now. Please try again shortly.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe now'; }
+      return;
+    }
+
+    FlutterwaveCheckout({
+      public_key: FLW_PUBLIC_KEY,
+      tx_ref: txRef,
+      amount: fee,
+      currency: 'NGN',
+      payment_options: 'card, mobilemoney, ussd',
+      customer: { email: user.email, name: user.name },
+      customizations: { title: 'Grovia — Creator subscription', description: '1-year creator subscription' },
+      callback: async function (response) {
+        try {
+          const result = await GroviaAPI.verifyPayment(response.transaction_id || response.tx_ref, 'subscription', subId);
+          if (result.error) throw new Error(result.error);
+          renderRoute();
+        } catch (err) {
+          showGateAlert('Payment received but verification failed. Contact support with reference ' + txRef + '.');
+        }
+      },
+      onclose: function () { if (btn) { btn.disabled = false; btn.textContent = 'Subscribe now'; } },
+    });
+  }
+
+  if (!active) {
+    const fee = (db.platformSettings && db.platformSettings.creatorYearlyFee) || 0;
+    bodyHtml =
+      '<div class="gate-card"><div class="gate-icon">🌱</div><h2>Become a Grovia creator</h2>' +
+      '<p>Open a store, list digital products, and set your own price — for one flat yearly fee.</p>' +
+      '<p class="gate-price">₦' + fee.toLocaleString() + ' <span>/ year</span></p>' +
+      '<div id="gate-alert" class="alert"></div>' +
+      '<button class="btn btn-primary btn-wide" id="subscribe-btn">Subscribe now</button></div>';
+
+    after = function () {
+      document.getElementById('subscribe-btn').addEventListener('click', function () { startSubscriptionCheckout(fee); });
+    };
+  } else {
+    const stores = db.stores.filter(function (s) { return s.ownerId === user.id; });
+    const productCount = db.products.filter(function (p) { return stores.some(function (s) { return s.id === p.storeId; }); }).length;
+
+    let html = '';
+    if (inGrace) {
+      html +=
+        '<div class="banner warn">⏳ Your subscription lapsed and you\u2019re in the grace period until ' +
+        formatDate(sub.graceUntil) + '. <a href="#" id="renew-link">Renew now</a> to keep your store open.</div>';
+    }
+    html +=
+      '<div class="stat-grid">' +
+      '<div class="stat-card"><p class="stat-label">Wallet balance</p><p class="stat-value">₦' + user.creatorWallet.toLocaleString() + '</p></div>' +
+      '<div class="stat-card"><p class="stat-label">Products live</p><p class="stat-value">' + productCount + '</p></div>' +
+      '<div class="stat-card"><p class="stat-label">Referral wallet</p><p class="stat-value">₦' + (Number(user.referralWallet) || 0).toLocaleString() + '</p></div>' +
+      '</div>';
+    html += '<div class="section-heading">Quick actions</div><div class="link-list">';
+    html += linkCard('/creator/product/new', '➕', 'Create a product', 'List an ebook, course, or template');
+    html += linkCard('/creator/products', '📦', 'Your products', productCount + ' product' + (productCount === 1 ? '' : 's') + ' listed');
+    html += linkCard('/creator/store', '🏪', stores.length ? 'Store settings' : 'Set up your store', stores.length ? stores[0].name : 'Give your store a name and description');
+    html += linkCard('/creator/wallet', '💰', 'Wallet', 'View earnings and request a withdrawal');
+    html += linkCard('/referrals', '🎁', 'Refer & earn', 'Invite people to Grovia and earn on every payment');
+    html += '</div>';
+
+    bodyHtml = html;
+
+    after = function () {
+      document.querySelectorAll('.link-card[data-nav]').forEach(function (el) {
+        el.addEventListener('click', function () { go(el.getAttribute('data-nav')); });
+      });
+      const renewLink = document.getElementById('renew-link');
+      if (renewLink) {
+        renewLink.addEventListener('click', function (e) {
+          e.preventDefault();
+          const fee = (db.platformSettings && db.platformSettings.creatorYearlyFee) || 0;
+          startSubscriptionCheckout(fee);
+        });
+      }
+    };
+  }
+
+  return {
+    html: '<div class="wrap"><h1 class="page-title">Creator dashboard</h1><p class="page-sub">Manage your store, products, and earnings.</p>' + bodyHtml + '</div>',
+    after: after,
+  };
+}
+
+/* ------------------------------------------------------ affiliate: dashboard */
+async function viewAffiliateDashboard() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your dashboard. Refresh to try again.</p></div>' };
+  }
+
+  const sub = user.affiliateSub;
+  const active = GroviaAPI.isSubActive(sub);
+  const inGrace = active && !sub.active;
+
+  let bodyHtml, after;
+
+  function linkCard(path, icon, title, desc) {
+    return (
+      '<div class="link-card" data-nav="' + path + '">' +
+      '<span class="link-icon">' + icon + '</span>' +
+      '<span><p class="link-title">' + escapeHtml(title) + '</p><p class="link-desc">' + escapeHtml(desc) + '</p></span>' +
+      '<span class="link-arrow">\u2192</span></div>'
+    );
+  }
+
+  async function startSubscriptionCheckout(fee) {
+    const btn = document.getElementById('subscribe-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Preparing checkout\u2026'; }
+    const subId = crypto.randomUUID();
+    const txRef = 'grovia_sub_' + subId;
+
+    function showGateAlert(message) {
+      const el = document.getElementById('gate-alert');
+      if (!el) return;
+      el.textContent = message; el.className = 'alert error';
+    }
+
+    try {
+      await GroviaAPI.pushDb(function (draft) {
+        draft.subscriptions.push({
+          id: subId, userId: user.id, role: 'affiliate', amount: fee, status: 'pending',
+          flutterwaveTxRef: txRef, createdAt: new Date().toISOString(), paidAt: null, expiresAt: null,
+        });
+      });
+    } catch (err) {
+      showGateAlert('Couldn\u2019t start checkout. Please try again.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe now'; }
+      return;
+    }
+
+    if (typeof FlutterwaveCheckout !== 'function') {
+      showGateAlert('Payments are unavailable right now. Please try again shortly.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Subscribe now'; }
+      return;
+    }
+
+    FlutterwaveCheckout({
+      public_key: FLW_PUBLIC_KEY,
+      tx_ref: txRef,
+      amount: fee,
+      currency: 'NGN',
+      payment_options: 'card, mobilemoney, ussd',
+      customer: { email: user.email, name: user.name },
+      customizations: { title: 'Grovia \u2014 Affiliate subscription', description: '1-year affiliate subscription' },
+      callback: async function (response) {
+        try {
+          const result = await GroviaAPI.verifyPayment(response.transaction_id || response.tx_ref, 'subscription', subId);
+          if (result.error) throw new Error(result.error);
+          renderRoute();
+        } catch (err) {
+          showGateAlert('Payment received but verification failed. Contact support with reference ' + txRef + '.');
+        }
+      },
+      onclose: function () { if (btn) { btn.disabled = false; btn.textContent = 'Subscribe now'; } },
+    });
+  }
+
+  if (!active) {
+    const fee = (db.platformSettings && db.platformSettings.affiliateYearlyFee) || 0;
+    bodyHtml =
+      '<div class="gate-card"><div class="gate-icon">\ud83d\udd17</div><h2>Become a Grovia affiliate</h2>' +
+      '<p>Share other creators\u2019 products with your own link and earn a commission on every sale \u2014 for one flat yearly fee.</p>' +
+      '<p class="gate-price">\u20a6' + fee.toLocaleString() + ' <span>/ year</span></p>' +
+      '<div id="gate-alert" class="alert"></div>' +
+      '<button class="btn btn-primary btn-wide" id="subscribe-btn">Subscribe now</button></div>';
+
+    after = function () {
+      document.getElementById('subscribe-btn').addEventListener('click', function () { startSubscriptionCheckout(fee); });
+    };
+  } else {
+    const referredOrders = db.orders.filter(function (o) {
+      return o.affiliateRef === user.referralCode && o.status === 'paid';
+    });
+    const totalEarned = referredOrders.reduce(function (sum, o) { return sum + (Number(o.affiliateCommission) || 0); }, 0);
+
+    let html = '';
+    if (inGrace) {
+      html +=
+        '<div class="banner warn">\u23f3 Your subscription lapsed and you\u2019re in the grace period until ' +
+        formatDate(sub.graceUntil) + '. <a href="#" id="renew-link">Renew now</a> to keep sharing links.</div>';
+    }
+    html +=
+      '<div class="stat-grid">' +
+      '<div class="stat-card"><p class="stat-label">Wallet balance</p><p class="stat-value">\u20a6' + user.affiliateWallet.toLocaleString() + '</p></div>' +
+      '<div class="stat-card"><p class="stat-label">Sales referred</p><p class="stat-value">' + referredOrders.length + '</p></div>' +
+      '<div class="stat-card"><p class="stat-label">Referral wallet</p><p class="stat-value">\u20a6' + (Number(user.referralWallet) || 0).toLocaleString() + '</p></div>' +
+      '</div>';
+    html += '<p class="field-hint" style="margin:-14px 0 22px;">\u20a6' + totalEarned.toLocaleString() + ' in commission earned to date.</p>';
+    html += '<div class="section-heading">Quick actions</div><div class="link-list">';
+    html += linkCard('/affiliate/browse', '\ud83d\udd0d', 'Browse products', 'Find products and get your link');
+    html += linkCard('/affiliate/wallet', '\ud83d\udcb0', 'Wallet', 'View earnings and request a withdrawal');
+    html += linkCard('/referrals', '\ud83c\udf81', 'Refer & earn', 'Invite people to Grovia and earn on every payment');
+    html += '</div>';
+
+    bodyHtml = html;
+
+    after = function () {
+      document.querySelectorAll('.link-card[data-nav]').forEach(function (el) {
+        el.addEventListener('click', function () { go(el.getAttribute('data-nav')); });
+      });
+      const renewLink = document.getElementById('renew-link');
+      if (renewLink) {
+        renewLink.addEventListener('click', function (e) {
+          e.preventDefault();
+          const fee = (db.platformSettings && db.platformSettings.affiliateYearlyFee) || 0;
+          startSubscriptionCheckout(fee);
+        });
+      }
+    };
+  }
+
+  return {
+    html: '<div class="wrap"><h1 class="page-title">Affiliate dashboard</h1><p class="page-sub">Share products, track referrals, and manage earnings.</p>' + bodyHtml + '</div>',
+    after: after,
+  };
+}
+
+/* ------------------------------------------------------------- affiliate: browse */
+async function viewAffiliateBrowse() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load the catalog. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="browse-back-link">\u2190 Dashboard</a>' +
+      '<h1 class="page-title">Browse products</h1><p class="page-sub">Get your link and earn a commission on every sale.</p>' +
+      inner + '</div>'
+    );
+  }
+  function wireBack() {
+    const back = document.getElementById('browse-back-link');
+    if (back) back.addEventListener('click', function () { go('/affiliate/dashboard'); });
+  }
+
+  if (!GroviaAPI.isSubActive(user.affiliateSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active affiliate subscription to get product links.</p>' +
+        '<a href="#/affiliate/dashboard" class="btn btn-primary">Go to dashboard</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  const products = db.products.slice().sort(function (a, b) {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
+  let bodyHtml;
+  if (!products.length) {
+    bodyHtml = '<p class="skeleton-text">No products yet \u2014 check back soon.</p>';
+  } else {
+    bodyHtml =
+      '<div class="product-grid">' +
+      products
+        .map(function (p, i) {
+          const store = db.stores.find(function (s) { return s.id === p.storeId; });
+          const cover = p.images && p.images[0]
+            ? '<div class="product-cover" style="background-image:url(\'' + cssUrlSafe(p.images[0]) + '\');background-size:cover;background-position:center;"></div>'
+            : '<div class="product-cover g' + ((i % 4) + 1) + '"><i data-lucide="package" style="width:26px;height:26px;"></i></div>';
+          const price = typeof p.price === 'number' ? p.price : Number(p.price) || 0;
+          return (
+            '<div class="product-card" data-nav="/product/' + p.id + '">' + cover +
+            '<div class="product-body">' +
+            '<p class="product-name">' + escapeHtml(p.name) + '</p>' +
+            '<p class="product-store">' + escapeHtml(store ? store.name : 'Grovia store') + '</p>' +
+            '<div class="product-meta"><span class="product-price">\u20a6' + price.toLocaleString() + '</span>' +
+            '<span class="product-comm">' + (p.commissionRate || 0) + '% for you</span></div>' +
+            '<button type="button" class="get-link-btn" data-get-link="' + p.id + '">Get link</button>' +
+            '</div></div>'
+          );
+        })
+        .join('') +
+      '</div>';
+  }
+
+  function wireCards() {
+    document.querySelectorAll('.product-card[data-nav]').forEach(function (el) {
+      el.addEventListener('click', function () { go(el.getAttribute('data-nav')); });
+    });
+    document.querySelectorAll('[data-get-link]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const productId = btn.getAttribute('data-get-link');
+        const link = window.location.origin + window.location.pathname + '#/product/' + productId + '?ref=' + user.referralCode;
+        const restore = btn.textContent;
+        function done(label) {
+          btn.textContent = label;
+          setTimeout(function () { btn.textContent = restore; }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(link).then(function () { done('Copied!'); }, function () { done('Copy failed'); });
+        } else {
+          done('Copy failed');
+        }
+      });
+    });
+  }
+
+  return {
+    html: shell(bodyHtml),
+    after: function () { wireBack(); wireCards(); if (window.lucide) lucide.createIcons(); },
+  };
+}
+
+/* -------------------------------------------------------- creator: store */
+async function viewCreatorStoreSettings() {
+  const NAME_MAX = 60;
+  const DESC_MAX = 280;
+
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your store. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="store-back-link">← Dashboard</a>' +
+      '<h1 class="page-title">Store settings</h1><p class="page-sub">Give your store a name and description buyers will see.</p>' +
+      inner + '</div>'
+    );
+  }
+
+  function wireBack() {
+    const back = document.getElementById('store-back-link');
+    if (back) back.addEventListener('click', function () { go('/creator/dashboard'); });
+  }
+
+  if (!GroviaAPI.isSubActive(user.creatorSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active creator subscription to set up a store.</p>' +
+        '<a href="#/creator/dashboard" class="btn btn-primary">Go to dashboard</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  let store = db.stores.find(function (s) { return s.ownerId === user.id; }) || null;
+
+  function render() {
+    const isNew = !store;
+    let html = '';
+    if (!isNew) {
+      const storeUrl = window.location.origin + window.location.pathname + '#/store/' + store.id;
+      html +=
+        '<div class="store-link-row"><span>Your store: <a href="' + storeUrl + '">' + storeUrl.replace(/^https?:\/\//, '') + '</a></span>' +
+        '<button class="copy-btn" id="copy-link-btn" type="button">Copy</button></div>';
+    }
+    html +=
+      '<div class="card"><div id="form-alert" class="alert"></div>' +
+      '<form id="store-form" novalidate>' +
+      '<div class="field"><label for="name">Store name</label>' +
+      '<input type="text" id="name" maxlength="' + NAME_MAX + '" value="' + escapeHtml((store && store.name) || '') + '" required />' +
+      '<p class="char-count" id="name-count">0 / ' + NAME_MAX + '</p></div>' +
+      '<div class="field"><label for="description">Description</label>' +
+      '<textarea id="description" rows="4" maxlength="' + DESC_MAX + '">' + escapeHtml((store && store.description) || '') + '</textarea>' +
+      '<p class="field-hint">Shown at the top of your public store page.</p>' +
+      '<p class="char-count" id="desc-count">0 / ' + DESC_MAX + '</p></div>' +
+      '<button type="submit" class="btn btn-primary btn-wide" id="submit-btn">' + (isNew ? 'Create store' : 'Save changes') + '</button>' +
+      '</form></div>';
+
+    document.getElementById('app').innerHTML = shell(html);
+    wireBack();
+
+    const nameInput = document.getElementById('name');
+    const descInput = document.getElementById('description');
+    const nameCount = document.getElementById('name-count');
+    const descCount = document.getElementById('desc-count');
+    const updateCounts = function () {
+      nameCount.textContent = nameInput.value.length + ' / ' + NAME_MAX;
+      descCount.textContent = descInput.value.length + ' / ' + DESC_MAX;
+    };
+    nameInput.addEventListener('input', updateCounts);
+    descInput.addEventListener('input', updateCounts);
+    updateCounts();
+
+    document.getElementById('store-form').addEventListener('submit', onSubmit);
+
+    const copyBtn = document.getElementById('copy-link-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async function () {
+        const storeUrl = window.location.origin + window.location.pathname + '#/store/' + store.id;
+        try {
+          await navigator.clipboard.writeText(storeUrl);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+        } catch (e) { /* clipboard unavailable */ }
+      });
+    }
+    if (window.lucide) lucide.createIcons();
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const name = document.getElementById('name').value.trim();
+    const description = document.getElementById('description').value.trim();
+    function showAlert(msg, kind) {
+      const el = document.getElementById('form-alert');
+      el.textContent = msg; el.className = 'alert ' + (kind || 'error');
+    }
+    document.getElementById('form-alert').className = 'alert';
+    if (!name) { showAlert('Give your store a name.'); return; }
+
+    btn.disabled = true; btn.textContent = 'Saving…';
+    const isNew = !store;
+    const storeId = store ? store.id : crypto.randomUUID();
+
+    try {
+      const saved = await GroviaAPI.pushDb(function (draft) {
+        const existing = draft.stores.find(function (s) { return s.id === storeId; });
+        if (existing) { existing.name = name; existing.description = description; }
+        else draft.stores.push({ id: storeId, ownerId: user.id, name: name, description: description, createdAt: new Date().toISOString() });
+      });
+      db = saved;
+      store = db.stores.find(function (s) { return s.id === storeId; });
+      render();
+      const el = document.getElementById('form-alert');
+      el.textContent = isNew ? 'Store created!' : 'Changes saved.';
+      el.className = 'alert info';
+    } catch (err) {
+      showAlert('Something went wrong. Please try again.');
+      btn.disabled = false; btn.textContent = isNew ? 'Create store' : 'Save changes';
+    }
+  }
+
+  return {
+    html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>',
+    after: render,
+  };
+}
+
+/* --------------------------------------------------------- creator: products */
+async function viewCreatorProducts() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your products. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="products-back-link">\u2190 Dashboard</a>' +
+      '<h1 class="page-title">Your products</h1><p class="page-sub">Manage what\u2019s listed in your store.</p>' +
+      inner + '</div>'
+    );
+  }
+  function wireBack() {
+    const back = document.getElementById('products-back-link');
+    if (back) back.addEventListener('click', function () { go('/creator/dashboard'); });
+  }
+
+  if (!GroviaAPI.isSubActive(user.creatorSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active creator subscription to manage products.</p>' +
+        '<a href="#/creator/dashboard" class="btn btn-primary">Go to dashboard</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  const store = db.stores.find(function (s) { return s.ownerId === user.id; });
+  if (!store) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">Set up your store before adding products.</p>' +
+        '<a href="#/creator/store" class="btn btn-primary">Set up store</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  let products = db.products
+    .filter(function (p) { return p.storeId === store.id; })
+    .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+
+  function renderList() {
+    let listHtml;
+    if (!products.length) {
+      listHtml = '<p class="skeleton-text">You haven\u2019t listed any products yet.</p>';
+    } else {
+      listHtml = products
+        .map(function (p, i) {
+          const cover = p.images && p.images[0]
+            ? '<div class="product-row-cover" style="background-image:url(\'' + cssUrlSafe(p.images[0]) + '\');"></div>'
+            : '<div class="product-row-cover g' + ((i % 4) + 1) + '"><i data-lucide="package" style="width:20px;height:20px;"></i></div>';
+          const price = typeof p.price === 'number' ? p.price : Number(p.price) || 0;
+          return (
+            '<div class="product-row">' + cover +
+            '<div class="product-row-body"><p class="product-row-name">' + escapeHtml(p.name) + '</p>' +
+            '<p class="product-row-meta">\u20a6' + price.toLocaleString() + ' \u00b7 ' + (p.commissionRate || 0) + '% commission</p></div>' +
+            '<div class="product-row-actions">' +
+            '<button class="icon-btn" type="button" data-edit="' + p.id + '" aria-label="Edit"><i data-lucide="pencil" style="width:16px;height:16px;"></i></button>' +
+            '<button class="icon-btn danger" type="button" data-delete="' + p.id + '" aria-label="Delete"><i data-lucide="trash-2" style="width:16px;height:16px;"></i></button>' +
+            '</div></div>'
+          );
+        })
+        .join('');
+    }
+
+    document.getElementById('app').innerHTML = shell(
+      '<div id="products-alert" class="alert"></div>' +
+      '<button class="btn btn-primary btn-wide" id="new-product-btn" style="margin-bottom:18px;">+ Create a product</button>' +
+      listHtml
+    );
+    wireBack();
+    if (window.lucide) lucide.createIcons();
+
+    document.getElementById('new-product-btn').addEventListener('click', function () { go('/creator/product/new'); });
+    document.querySelectorAll('[data-edit]').forEach(function (btn) {
+      btn.addEventListener('click', function () { go('/creator/product/' + btn.getAttribute('data-edit')); });
+    });
+    document.querySelectorAll('[data-delete]').forEach(function (btn) {
+      btn.addEventListener('click', function () { onDelete(btn.getAttribute('data-delete')); });
+    });
+  }
+
+  async function onDelete(productId) {
+    const product = products.find(function (p) { return p.id === productId; });
+    if (!product) return;
+    if (!window.confirm('Delete "' + product.name + '"? This can\u2019t be undone.')) return;
+
+    function showAlert(msg) {
+      const el = document.getElementById('products-alert');
+      if (el) { el.textContent = msg; el.className = 'alert error'; }
+    }
+
+    try {
+      const saved = await GroviaAPI.pushDb(function (draft) {
+        draft.products = draft.products.filter(function (p) { return p.id !== productId; });
+      });
+      db = saved;
+      products = db.products
+        .filter(function (p) { return p.storeId === store.id; })
+        .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+      renderList();
+    } catch (err) {
+      showAlert('Couldn\u2019t delete that product. Please try again.');
+    }
+  }
+
+  return { html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>', after: renderList };
+}
+
+/* ----------------------------------------------------- creator: product edit */
+async function viewCreatorProductEdit(params) {
+  const isNew = !params.id;
+  const NAME_MAX = 80;
+  const DESC_MAX = 600;
+
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load this page. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="pe-back-link">\u2190 Your products</a>' +
+      '<h1 class="page-title">' + (isNew ? 'Create a product' : 'Edit product') + '</h1>' +
+      '<p class="page-sub">' + (isNew ? 'List an ebook, course, or template for sale.' : 'Update your product details.') + '</p>' +
+      inner + '</div>'
+    );
+  }
+  function wireBack() {
+    const back = document.getElementById('pe-back-link');
+    if (back) back.addEventListener('click', function () { go('/creator/products'); });
+  }
+
+  if (!GroviaAPI.isSubActive(user.creatorSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active creator subscription to manage products.</p>' +
+        '<a href="#/creator/dashboard" class="btn btn-primary">Go to dashboard</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  const store = db.stores.find(function (s) { return s.ownerId === user.id; });
+  if (!store) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">Set up your store before adding products.</p>' +
+        '<a href="#/creator/store" class="btn btn-primary">Set up store</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  let product = null;
+  if (!isNew) {
+    product = db.products.find(function (p) { return p.id === params.id && p.storeId === store.id; }) || null;
+    if (!product) {
+      return {
+        html: shell(
+          '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">We couldn\u2019t find that product.</p>' +
+          '<a href="#/creator/products" class="btn btn-primary">Back to products</a></div>'
+        ),
+        after: wireBack,
+      };
+    }
+  }
+
+  const commissionMin = (db.platformSettings && db.platformSettings.commissionRateMin != null) ? db.platformSettings.commissionRateMin : 0;
+  const commissionMax = (db.platformSettings && db.platformSettings.commissionRateMax != null) ? db.platformSettings.commissionRateMax : 100;
+
+  let images = (product && product.images) ? product.images.slice() : [];
+  let uploadedFileId = null; // only meaningful for a brand-new product — see note below
+  let fileUploadState = { uploading: false, progress: 0, doneName: null };
+
+  function render() {
+    const imagesHtml = images
+      .map(function (url, i) {
+        return (
+          '<div class="pe-thumb"><div class="pe-thumb-img" style="background-image:url(\'' + cssUrlSafe(url) + '\');"></div>' +
+          '<button type="button" class="pe-thumb-remove" data-remove-img="' + i + '" aria-label="Remove image"><i data-lucide="x" style="width:14px;height:14px;"></i></button></div>'
+        );
+      })
+      .join('');
+    const addImageBtn = images.length < 3
+      ? '<label class="pe-thumb pe-thumb-add" for="image-input"><input type="file" id="image-input" accept="image/*" style="display:none;" /><i data-lucide="plus" style="width:20px;height:20px;"></i></label>'
+      : '';
+
+    let fileSectionHtml;
+    if (isNew) {
+      // A product's deliverable fileId is write-protected server-side once set (Code.gs re-attaches the
+      // existing fileId on every update to keep it from being wiped by unrelated edits), so it can only
+      // ever be assigned at creation — there's no supported way to replace it afterwards. That's why the
+      // upload control below only appears for a brand-new product, never in edit mode.
+      if (fileUploadState.doneName) {
+        fileSectionHtml =
+          '<div class="pe-file-done"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> ' + escapeHtml(fileUploadState.doneName) + '</div>' +
+          '<label class="pe-file-replace" for="deliverable-input">Choose a different file<input type="file" id="deliverable-input" style="display:none;" /></label>';
+      } else if (fileUploadState.uploading) {
+        fileSectionHtml =
+          '<div class="pe-progress"><div class="pe-progress-bar" style="width:' + Math.round(fileUploadState.progress * 100) + '%;"></div></div>' +
+          '<p class="field-hint">Uploading\u2026 ' + Math.round(fileUploadState.progress * 100) + '%</p>';
+      } else {
+        fileSectionHtml =
+          '<label class="btn btn-outline btn-wide" for="deliverable-input" style="cursor:pointer;">Choose deliverable file<input type="file" id="deliverable-input" style="display:none;" /></label>' +
+          '<p class="field-hint">Buyers get this after a verified payment.</p>';
+      }
+    } else {
+      fileSectionHtml = '<p class="field-hint">The deliverable file set at creation can\u2019t be changed here \u2014 contact support to replace it.</p>';
+    }
+
+    const html =
+      '<div id="pe-alert" class="alert"></div>' +
+      '<div class="card">' +
+      '<div class="field"><label>Product images (up to 3)</label>' +
+      '<div class="pe-thumbs">' + imagesHtml + addImageBtn + '</div>' +
+      '<p class="field-hint">Shown on your store and product pages.</p></div>' +
+      '<div class="field"><label for="pe-name">Product name</label>' +
+      '<input type="text" id="pe-name" maxlength="' + NAME_MAX + '" value="' + escapeHtml((product && product.name) || '') + '" required /></div>' +
+      '<div class="field"><label for="pe-price">Price (\u20a6)</label>' +
+      '<input type="number" id="pe-price" min="0" step="1" value="' + ((product && product.price) || '') + '" required /></div>' +
+      '<div class="field"><label for="pe-commission">Affiliate commission (%)</label>' +
+      '<input type="number" id="pe-commission" min="' + commissionMin + '" max="' + commissionMax + '" step="1" value="' + ((product && product.commissionRate) || commissionMin) + '" required />' +
+      '<p class="field-hint">Between ' + commissionMin + '% and ' + commissionMax + '%.</p></div>' +
+      '<div class="field"><label for="pe-description">Description</label>' +
+      '<textarea id="pe-description" rows="4" maxlength="' + DESC_MAX + '">' + escapeHtml((product && product.description) || '') + '</textarea></div>' +
+      '<div class="field"><label>Deliverable file</label>' + fileSectionHtml + '</div>' +
+      '<button type="submit" class="btn btn-primary btn-wide" id="pe-submit-btn">' + (isNew ? 'List product' : 'Save changes') + '</button>' +
+      '</div>';
+
+    document.getElementById('app').innerHTML = shell('<form id="pe-form" novalidate>' + html + '</form>');
+    wireBack();
+    if (window.lucide) lucide.createIcons();
+
+    document.querySelectorAll('[data-remove-img]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        images.splice(Number(btn.getAttribute('data-remove-img')), 1);
+        render();
+      });
+    });
+
+    const imageInput = document.getElementById('image-input');
+    if (imageInput) {
+      imageInput.addEventListener('change', async function () {
+        const file = imageInput.files[0];
+        if (!file) return;
+        try {
+          const url = await GroviaAPI.uploadImage(file);
+          images.push(url);
+          render();
+        } catch (err) {
+          const alertEl = document.getElementById('pe-alert');
+          if (alertEl) { alertEl.textContent = 'Couldn\u2019t upload that image. Please try again.'; alertEl.className = 'alert error'; }
+        }
+      });
+    }
+
+    const deliverableInput = document.getElementById('deliverable-input');
+    if (deliverableInput) {
+      deliverableInput.addEventListener('change', async function () {
+        const file = deliverableInput.files[0];
+        if (!file) return;
+        fileUploadState = { uploading: true, progress: 0, doneName: null };
+        render();
+        try {
+          uploadedFileId = await GroviaAPI.uploadFile(file, function (p) {
+            fileUploadState.progress = p;
+            const bar = document.querySelector('.pe-progress-bar');
+            const hint = document.querySelector('.pe-progress + .field-hint');
+            if (bar) bar.style.width = Math.round(p * 100) + '%';
+            if (hint) hint.textContent = 'Uploading\u2026 ' + Math.round(p * 100) + '%';
+          });
+          fileUploadState = { uploading: false, progress: 1, doneName: file.name };
+          render();
+        } catch (err) {
+          fileUploadState = { uploading: false, progress: 0, doneName: null };
+          uploadedFileId = null;
+          render();
+          const alertEl = document.getElementById('pe-alert');
+          if (alertEl) { alertEl.textContent = 'Couldn\u2019t upload that file. Please try again.'; alertEl.className = 'alert error'; }
+        }
+      });
+    }
+
+    document.getElementById('pe-form').addEventListener('submit', onSubmit);
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('pe-submit-btn');
+    const name = document.getElementById('pe-name').value.trim();
+    const price = Number(document.getElementById('pe-price').value);
+    const commissionRate = Number(document.getElementById('pe-commission').value);
+    const description = document.getElementById('pe-description').value.trim();
+
+    function showAlert(msg) {
+      const el = document.getElementById('pe-alert');
+      if (el) { el.textContent = msg; el.className = 'alert error'; }
+    }
+    const alertReset = document.getElementById('pe-alert');
+    if (alertReset) alertReset.className = 'alert';
+
+    if (!name) { showAlert('Give your product a name.'); return; }
+    if (!price || price <= 0) { showAlert('Enter a price greater than 0.'); return; }
+    if (isNaN(commissionRate) || commissionRate < commissionMin || commissionRate > commissionMax) {
+      showAlert('Commission must be between ' + commissionMin + '% and ' + commissionMax + '%.');
+      return;
+    }
+    if (isNew && !uploadedFileId) { showAlert('Upload the file buyers will receive.'); return; }
+    if (fileUploadState.uploading) { showAlert('Wait for the file upload to finish.'); return; }
+
+    btn.disabled = true; btn.textContent = 'Saving\u2026';
+
+    const now = new Date().toISOString();
+    const productId = isNew ? crypto.randomUUID() : product.id;
+
+    try {
+      await GroviaAPI.pushDb(function (draft) {
+        if (isNew) {
+          draft.products.push({
+            id: productId, storeId: store.id, name: name, price: price, commissionRate: commissionRate,
+            description: description, images: images, fileId: uploadedFileId,
+            createdAt: now, updatedAt: now,
+          });
+        } else {
+          const existing = draft.products.find(function (p) { return p.id === productId; });
+          if (existing) {
+            existing.name = name; existing.price = price; existing.commissionRate = commissionRate;
+            existing.description = description; existing.images = images; existing.updatedAt = now;
+          }
+        }
+      });
+      go('/creator/products');
+    } catch (err) {
+      showAlert('Something went wrong. Please try again.');
+      btn.disabled = false; btn.textContent = isNew ? 'List product' : 'Save changes';
+    }
+  }
+
+  return { html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>', after: render };
+}
+
+/* ============================================================ WITHDRAWAL ==
+ * Shared by the creator / affiliate / referral wallet views below. Handles:
+ *  - one-time country capture (falls back to a picker if user.country is null)
+ *  - reading payout config straight from db.supportedCountries (public data,
+ *    already on the client via getDb — no extra round trip needed)
+ *  - bank vs mobile-money fields, based on that country's payoutMethods
+ *  - NG/GH/GH-momo name verification via resolveAccount; a plain self-typed
+ *    name field (with an "unverified" notice) everywhere else
+ *  - a live NGN -> local-currency conversion preview
+ * Produces a record shaped to match Code.gs's initiateTransfer/webhook logic.
+ * ============================================================================ */
+
+// Best-effort mobile money network codes per country. Confirm against
+// Flutterwave's current docs before a country goes live — these are not
+// guaranteed to be exhaustive or perfectly current.
+const MOBILE_MONEY_NETWORKS = {
+  'Kenya': [{ code: 'MPS', label: 'M-Pesa' }],
+  'Uganda': [{ code: 'MTN', label: 'MTN' }, { code: 'AIRTEL', label: 'Airtel' }],
+  'Tanzania': [{ code: 'MPESA', label: 'M-Pesa' }, { code: 'TIGO', label: 'Tigo' }, { code: 'AIRTEL', label: 'Airtel' }],
+  'Rwanda': [{ code: 'MTN', label: 'MTN' }],
+  'Zambia': [{ code: 'MTN', label: 'MTN' }, { code: 'AIRTEL', label: 'Airtel' }],
+  'Malawi': [{ code: 'MPAMBA', label: 'TNM Mpamba' }, { code: 'AIRTEL', label: 'Airtel Money' }],
+  'Ethiopia': [{ code: 'TELEBIRR', label: 'Telebirr' }],
+  'Cameroon': [{ code: 'MTN', label: 'MTN' }, { code: 'ORANGE', label: 'Orange' }],
+  "Cote d'Ivoire": [{ code: 'MTN', label: 'MTN' }, { code: 'ORANGE', label: 'Orange' }, { code: 'MOOV', label: 'Moov' }],
+  'Senegal': [{ code: 'ORANGE', label: 'Orange' }, { code: 'FREE', label: 'Free' }],
+  'Ghana': [{ code: 'MTN', label: 'MTN' }, { code: 'VODAFONE', label: 'Vodafone' }, { code: 'AIRTELTIGO', label: 'AirtelTigo' }],
+};
+
+function round2Client_(n) { return Math.round(n * 100) / 100; }
+
+function findCountryCfg_(db, countryName) {
+  return (db.supportedCountries || []).filter(function (c) { return c.country === countryName; })[0] || null;
+}
+
+/* Renders the whole "request a withdrawal" card content. Returns an HTML
+ * string; wireWithdrawalWidget() below attaches the behaviour afterward. */
+function withdrawalCardHtml_(user, db, balance, withdrawalMinimum) {
+  if (balance < withdrawalMinimum) {
+    return '<p class="field-hint">You need at least \u20a6' + withdrawalMinimum.toLocaleString() + ' in your wallet to request a withdrawal.</p>';
+  }
+
+  if (!user.country) {
+    const activeCountries = (db.supportedCountries || []).filter(function (c) { return c.active; });
+    const options = (db.supportedCountries || [])
+      .map(function (c) {
+        const disabled = c.active ? '' : ' disabled';
+        const label = c.active ? c.country : c.country + ' (coming soon)';
+        return '<option value="' + escapeHtml(c.country) + '"' + disabled + '>' + escapeHtml(label) + '</option>';
+      })
+      .join('');
+    return (
+      '<div id="wd-country-picker">' +
+      '<div class="field"><label for="wd-country-select">Which country are you withdrawing to?</label>' +
+      '<select id="wd-country-select"><option value="">Select a country\u2026</option>' + options + '</select>' +
+      (activeCountries.length ? '' : '<p class="field-hint">Withdrawals aren\u2019t open for any country yet \u2014 check back soon.</p>') +
+      '</div>' +
+      '<button type="button" class="btn btn-primary btn-wide" id="wd-country-save-btn"' + (activeCountries.length ? '' : ' disabled') + '>Continue</button>' +
+      '</div>'
+    );
+  }
+
+  const cfg = findCountryCfg_(db, user.country);
+  if (!cfg || !cfg.active || !cfg.fxRate) {
+    return (
+      '<p class="field-hint">Withdrawals for ' + escapeHtml(user.country) + ' aren\u2019t available yet. ' +
+      '<a href="mailto:support@grovia.app">Contact support</a>, or ' +
+      '<button type="button" class="btn-link" id="wd-change-country-btn">choose a different country</button>.</p>'
+    );
+  }
+
+  const methodOptions = cfg.payoutMethods
+    .map(function (m) { return '<option value="' + m + '">' + (m === 'bank' ? 'Bank account' : 'Mobile money') + '</option>'; })
+    .join('');
+  const methodFieldHtml = cfg.payoutMethods.length > 1
+    ? ('<div class="field"><label for="wd-method-select">Payout method</label><select id="wd-method-select">' + methodOptions + '</select></div>')
+    : '<input type="hidden" id="wd-method-select" value="' + cfg.payoutMethods[0] + '" />';
+
+  const verifiedNote = cfg.verified
+    ? ''
+    : '<p class="field-hint" style="color:var(--brand-deep);">This country isn\u2019t bank-verified yet \u2014 the account name below is self-entered. Double-check it before submitting.</p>';
+
+  return (
+    '<form id="wd-form">' +
+    '<p class="field-hint">Withdrawing to <strong>' + escapeHtml(cfg.country) + '</strong> \u00b7 ' +
+    '<button type="button" class="btn-link" id="wd-change-country-btn">change</button></p>' +
+    '<div class="field"><label for="wd-amount">Amount to withdraw (\u20a6)</label>' +
+    '<input type="number" id="wd-amount" min="' + withdrawalMinimum + '" max="' + balance + '" step="1" value="' + balance + '" required />' +
+    '<p class="field-hint">Minimum \u20a6' + withdrawalMinimum.toLocaleString() + '. Up to your balance of \u20a6' + balance.toLocaleString() + '.</p></div>' +
+    methodFieldHtml +
+    '<div id="wd-bank-fields" style="display:none;">' +
+    '<div class="field"><label for="wd-bank-select">Bank</label><select id="wd-bank-select"><option value="">Loading banks\u2026</option></select></div>' +
+    '<div class="field"><label for="wd-account-number">Account number</label><input type="text" id="wd-account-number" /></div>' +
+    '</div>' +
+    '<div id="wd-momo-fields" style="display:none;">' +
+    '<div class="field"><label for="wd-network-select">Provider</label><select id="wd-network-select"></select></div>' +
+    '<div class="field"><label for="wd-phone-number">Phone number</label><input type="text" id="wd-phone-number" /></div>' +
+    '</div>' +
+    verifiedNote +
+    '<div class="field" id="wd-name-field" style="display:none;"><label for="wd-account-name">Account holder name</label><input type="text" id="wd-account-name" /></div>' +
+    '<div id="wd-resolve-status" class="field-hint"></div>' +
+    '<div id="wd-preview" class="field-hint"></div>' +
+    '<button type="submit" class="btn btn-primary btn-wide" id="wd-submit-btn" disabled>Request withdrawal</button>' +
+    '</form>'
+  );
+}
+
+/* Attaches behaviour to whatever withdrawalCardHtml_() just rendered.
+ * ctx: { user, db, walletType, walletField, balance, withdrawalMinimum,
+ *        onCountrySaved, onSubmitted } */
+function wireWithdrawalWidget_(ctx) {
+  const countryForm = document.getElementById('wd-country-picker');
+  if (countryForm) {
+    const saveBtn = document.getElementById('wd-country-save-btn');
+    saveBtn.addEventListener('click', async function () {
+      const select = document.getElementById('wd-country-select');
+      const country = select.value;
+      if (!country) return;
+      saveBtn.disabled = true; saveBtn.textContent = 'Saving\u2026';
+      try {
+        const saved = await GroviaAPI.pushDb(function (draft) {
+          const u = draft.users.find(function (x) { return x.id === ctx.user.id; });
+          if (u) u.country = country;
+        });
+        ctx.onCountrySaved(saved);
+      } catch (err) {
+        saveBtn.disabled = false; saveBtn.textContent = 'Continue';
+      }
+    });
+    return;
+  }
+
+  const changeBtn = document.getElementById('wd-change-country-btn');
+  if (changeBtn) {
+    changeBtn.addEventListener('click', async function () {
+      try {
+        const saved = await GroviaAPI.pushDb(function (draft) {
+          const u = draft.users.find(function (x) { return x.id === ctx.user.id; });
+          if (u) u.country = null;
+        });
+        ctx.onCountrySaved(saved);
+      } catch (err) { /* leave as-is on failure */ }
+    });
+  }
+
+  const form = document.getElementById('wd-form');
+  if (!form) return; // country picker or "not available" message — nothing else to wire
+
+  const cfg = findCountryCfg_(ctx.db, ctx.user.country);
+  const methodSelect = document.getElementById('wd-method-select');
+  const bankFields = document.getElementById('wd-bank-fields');
+  const momoFields = document.getElementById('wd-momo-fields');
+  const nameField = document.getElementById('wd-name-field');
+  const resolveStatus = document.getElementById('wd-resolve-status');
+  const preview = document.getElementById('wd-preview');
+  const submitBtn = document.getElementById('wd-submit-btn');
+  const amountInput = document.getElementById('wd-amount');
+
+  let resolvedName = null;   // set once Flutterwave confirms the account holder
+  let banksLoaded = false;
+
+  function currentMethod() { return methodSelect ? methodSelect.value : cfg.payoutMethods[0]; }
+
+  function updatePreview() {
+    const amount = Number(amountInput.value) || 0;
+    if (cfg.currency === 'NGN') { preview.textContent = ''; return; }
+    const converted = round2Client_(amount * cfg.fxRate * (1 - (cfg.feePercent || 0) / 100));
+    preview.textContent = '\u20a6' + amount.toLocaleString() + ' \u2192 ~' + cfg.currency + ' ' + converted.toLocaleString() +
+      (cfg.feePercent ? ' after a ' + cfg.feePercent + '% fee' : '');
+  }
+
+  function updateGating() {
+    const method = currentMethod();
+    if (cfg.verified) {
+      submitBtn.disabled = !resolvedName;
+    } else {
+      const nameVal = document.getElementById('wd-account-name').value.trim();
+      const destOk = method === 'bank'
+        ? !!document.getElementById('wd-account-number').value.trim()
+        : !!document.getElementById('wd-phone-number').value.trim();
+      submitBtn.disabled = !(nameVal && destOk);
+    }
+  }
+
+  async function loadBanks() {
+    if (banksLoaded) return;
+    const bankSelect = document.getElementById('wd-bank-select');
+    try {
+      const result = await GroviaAPI.getBanks(ctx.user.country);
+      if (result.error || !result.banks) { bankSelect.innerHTML = '<option value="">Couldn\u2019t load banks \u2014 try again</option>'; return; }
+      bankSelect.innerHTML = '<option value="">Select your bank\u2026</option>' +
+        result.banks.map(function (b) { return '<option value="' + escapeHtml(b.code) + '">' + escapeHtml(b.name) + '</option>'; }).join('');
+      banksLoaded = true;
+    } catch (err) {
+      bankSelect.innerHTML = '<option value="">Couldn\u2019t load banks \u2014 try again</option>';
+    }
+  }
+
+  function populateNetworks() {
+    const networkSelect = document.getElementById('wd-network-select');
+    const networks = MOBILE_MONEY_NETWORKS[ctx.user.country] || [];
+    networkSelect.innerHTML = networks.map(function (n) { return '<option value="' + n.code + '">' + escapeHtml(n.label) + '</option>'; }).join('');
+  }
+
+  function toggleFields() {
+    const method = currentMethod();
+    bankFields.style.display = method === 'bank' ? '' : 'none';
+    momoFields.style.display = method === 'mobile_money' ? '' : 'none';
+    nameField.style.display = cfg.verified ? 'none' : '';
+    resolvedName = null;
+    resolveStatus.textContent = '';
+    updateGating();
+    if (method === 'bank') loadBanks();
+    if (method === 'mobile_money') populateNetworks();
+  }
+
+  async function tryResolve() {
+    if (!cfg.verified) return;
+    const method = currentMethod();
+    const accountBank = method === 'bank'
+      ? document.getElementById('wd-bank-select').value
+      : document.getElementById('wd-network-select').value;
+    const accountNumber = method === 'bank'
+      ? document.getElementById('wd-account-number').value.trim()
+      : document.getElementById('wd-phone-number').value.trim();
+    if (!accountBank || !accountNumber) return;
+
+    resolvedName = null;
+    resolveStatus.textContent = 'Checking\u2026';
+    updateGating();
+    try {
+      const result = await GroviaAPI.resolveAccount({ country: ctx.user.country, accountNumber: accountNumber, accountBank: accountBank });
+      if (result.error || !result.accountName) {
+        resolveStatus.textContent = 'Couldn\u2019t verify that account \u2014 double-check the details.';
+      } else {
+        resolvedName = result.accountName;
+        resolveStatus.textContent = '\u2713 Paying: ' + resolvedName;
+      }
+    } catch (err) {
+      resolveStatus.textContent = 'Couldn\u2019t verify that account \u2014 double-check the details.';
+    }
+    updateGating();
+  }
+
+  if (methodSelect && methodSelect.tagName === 'SELECT') methodSelect.addEventListener('change', toggleFields);
+  document.getElementById('wd-account-number').addEventListener('blur', tryResolve);
+  document.getElementById('wd-phone-number').addEventListener('blur', tryResolve);
+  document.getElementById('wd-account-name').addEventListener('input', updateGating);
+  document.getElementById('wd-account-number').addEventListener('input', updateGating);
+  document.getElementById('wd-phone-number').addEventListener('input', updateGating);
+  amountInput.addEventListener('input', updatePreview);
+
+  toggleFields();
+  updatePreview();
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const alertEl = document.getElementById('wd-alert');
+    function showAlert(msg) { if (alertEl) { alertEl.textContent = msg; alertEl.className = 'alert error'; } }
+    if (alertEl) alertEl.className = 'alert';
+
+    const amount = Number(amountInput.value);
+    if (!amount || amount < ctx.withdrawalMinimum) { showAlert('Enter at least \u20a6' + ctx.withdrawalMinimum.toLocaleString() + '.'); return; }
+    if (amount > ctx.balance) { showAlert('You can\u2019t withdraw more than your balance.'); return; }
+
+    const method = currentMethod();
+    const accountName = cfg.verified ? resolvedName : document.getElementById('wd-account-name').value.trim();
+    if (!accountName) { showAlert('Enter the account holder name.'); return; }
+
+    submitBtn.disabled = true; submitBtn.textContent = 'Submitting\u2026';
+
+    const convertedAmount = round2Client_(amount * cfg.fxRate * (1 - (cfg.feePercent || 0) / 100));
+    const record = {
+      id: crypto.randomUUID(), userId: ctx.user.id, walletType: ctx.walletType, amount: amount,
+      status: 'requested', createdAt: new Date().toISOString(), resolvedAt: null,
+      country: ctx.user.country, payoutType: method,
+      bankCode: method === 'bank' ? document.getElementById('wd-bank-select').value : null,
+      accountNumber: method === 'bank' ? document.getElementById('wd-account-number').value.trim() : null,
+      network: method === 'mobile_money' ? document.getElementById('wd-network-select').value : null,
+      phoneNumber: method === 'mobile_money' ? document.getElementById('wd-phone-number').value.trim() : null,
+      resolvedName: cfg.verified ? resolvedName : null,
+      accountName: cfg.verified ? null : accountName,
+      verified: !!cfg.verified,
+      ngnAmount: amount,
+      convertedAmount: convertedAmount,
+      fxRateUsed: cfg.fxRate,
+      feeApplied: cfg.feePercent || 0,
+    };
+
+    try {
+      const saved = await GroviaAPI.pushDb(function (draft) { draft.withdrawals.push(record); });
+      ctx.onSubmitted(saved);
+    } catch (err) {
+      showAlert('Something went wrong. Please try again.');
+      submitBtn.disabled = false; submitBtn.textContent = 'Request withdrawal';
+    }
+  });
+}
+
+/* ----------------------------------------------------------- creator: wallet */
+async function viewCreatorWallet() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your wallet. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="wallet-back-link">\u2190 Dashboard</a>' +
+      '<h1 class="page-title">Wallet</h1><p class="page-sub">Your earnings and withdrawal history.</p>' +
+      inner + '</div>'
+    );
+  }
+  function wireBack() {
+    const back = document.getElementById('wallet-back-link');
+    if (back) back.addEventListener('click', function () { go('/creator/dashboard'); });
+  }
+
+  if (!GroviaAPI.isSubActive(user.creatorSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active creator subscription to view your wallet.</p>' +
+        '<a href="#/creator/dashboard" class="btn btn-primary">Go to dashboard</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  const withdrawalMinimum = (db.platformSettings && db.platformSettings.withdrawalMinimum != null) ? db.platformSettings.withdrawalMinimum : 0;
+  let withdrawals = db.withdrawals
+    .filter(function (w) { return w.userId === user.id && w.walletType === 'creator'; })
+    .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+
+  function renderHistory() {
+    if (!withdrawals.length) return '<p class="skeleton-text">No withdrawal requests yet.</p>';
+    return withdrawals
+      .map(function (w) {
+        return (
+          '<div class="wd-row"><div><p class="wd-amount">\u20a6' + Number(w.amount || 0).toLocaleString() + '</p>' +
+          '<p class="wd-date">Requested ' + formatDate(w.createdAt) + '</p></div>' +
+          '<span class="wd-badge ' + escapeHtml(w.status) + '">' + escapeHtml(w.status) + '</span></div>'
+        );
+      })
+      .join('');
+  }
+
+  function render() {
+    const balance = typeof user.creatorWallet === 'number' ? user.creatorWallet : 0;
+    const formHtml = withdrawalCardHtml_(user, db, balance, withdrawalMinimum);
+
+    document.getElementById('app').innerHTML = shell(
+      '<div class="stat-grid"><div class="stat-card"><p class="stat-label">Wallet balance</p><p class="stat-value">\u20a6' + balance.toLocaleString() + '</p></div></div>' +
+      '<div class="card"><div id="wd-alert" class="alert"></div>' + formHtml + '</div>' +
+      '<div class="section-heading">Withdrawal history</div>' +
+      renderHistory()
+    );
+    wireBack();
+
+    wireWithdrawalWidget_({
+      user: user, db: db, walletType: 'creator', walletField: 'creatorWallet',
+      balance: balance, withdrawalMinimum: withdrawalMinimum,
+      onCountrySaved: function (saved) {
+        db = saved;
+        user = db.users.find(function (u) { return u.id === user.id; }) || user;
+        GroviaAPI.setSession(user);
+        render();
+      },
+      onSubmitted: function (saved) {
+        db = saved;
+        user = db.users.find(function (u) { return u.id === user.id; }) || user;
+        withdrawals = db.withdrawals
+          .filter(function (w) { return w.userId === user.id && w.walletType === 'creator'; })
+          .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+        render();
+      },
+    });
+  }
+
+  return { html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>', after: render };
+}
+
+/* --------------------------------------------------------- affiliate: wallet */
+async function viewAffiliateWallet() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your wallet. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="wallet-back-link">\u2190 Dashboard</a>' +
+      '<h1 class="page-title">Wallet</h1><p class="page-sub">Your commission earnings and withdrawal history.</p>' +
+      inner + '</div>'
+    );
+  }
+  function wireBack() {
+    const back = document.getElementById('wallet-back-link');
+    if (back) back.addEventListener('click', function () { go('/affiliate/dashboard'); });
+  }
+
+  if (!GroviaAPI.isSubActive(user.affiliateSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active affiliate subscription to view your wallet.</p>' +
+        '<a href="#/affiliate/dashboard" class="btn btn-primary">Go to dashboard</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  const withdrawalMinimum = (db.platformSettings && db.platformSettings.withdrawalMinimum != null) ? db.platformSettings.withdrawalMinimum : 0;
+  let withdrawals = db.withdrawals
+    .filter(function (w) { return w.userId === user.id && w.walletType === 'affiliate'; })
+    .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+
+  function renderHistory() {
+    if (!withdrawals.length) return '<p class="skeleton-text">No withdrawal requests yet.</p>';
+    return withdrawals
+      .map(function (w) {
+        return (
+          '<div class="wd-row"><div><p class="wd-amount">\u20a6' + Number(w.amount || 0).toLocaleString() + '</p>' +
+          '<p class="wd-date">Requested ' + formatDate(w.createdAt) + '</p></div>' +
+          '<span class="wd-badge ' + escapeHtml(w.status) + '">' + escapeHtml(w.status) + '</span></div>'
+        );
+      })
+      .join('');
+  }
+
+  function render() {
+    const balance = typeof user.affiliateWallet === 'number' ? user.affiliateWallet : 0;
+    const formHtml = withdrawalCardHtml_(user, db, balance, withdrawalMinimum);
+
+    document.getElementById('app').innerHTML = shell(
+      '<div class="stat-grid"><div class="stat-card"><p class="stat-label">Wallet balance</p><p class="stat-value">\u20a6' + balance.toLocaleString() + '</p></div></div>' +
+      '<div class="card"><div id="wd-alert" class="alert"></div>' + formHtml + '</div>' +
+      '<div class="section-heading">Withdrawal history</div>' +
+      renderHistory()
+    );
+    wireBack();
+
+    wireWithdrawalWidget_({
+      user: user, db: db, walletType: 'affiliate', walletField: 'affiliateWallet',
+      balance: balance, withdrawalMinimum: withdrawalMinimum,
+      onCountrySaved: function (saved) {
+        db = saved;
+        user = db.users.find(function (u) { return u.id === user.id; }) || user;
+        GroviaAPI.setSession(user);
+        render();
+      },
+      onSubmitted: function (saved) {
+        db = saved;
+        user = db.users.find(function (u) { return u.id === user.id; }) || user;
+        withdrawals = db.withdrawals
+          .filter(function (w) { return w.userId === user.id && w.walletType === 'affiliate'; })
+          .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+        render();
+      },
+    });
+  }
+
+  return { html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>', after: render };
+}
+
+/* -------------------------------------------------------------- referrals */
+async function viewReferrals() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your referrals. Refresh to try again.</p></div>' };
+  }
+
+  function shell(inner) {
+    return (
+      '<div class="wrap"><a class="back-link" id="referrals-back-link">\u2190 Account</a>' +
+      '<h1 class="page-title">Refer & earn</h1><p class="page-sub">Invite people to Grovia and earn every time they pay.</p>' +
+      inner + '</div>'
+    );
+  }
+  function wireBack() {
+    const back = document.getElementById('referrals-back-link');
+    if (back) back.addEventListener('click', function () { go('/account'); });
+  }
+
+  // Active in EITHER role counts \u2014 unlike the creator/affiliate wallet
+  // pages, which each gate on their own single subscription.
+  if (!GroviaAPI.isSubActive(user.creatorSub) && !GroviaAPI.isSubActive(user.affiliateSub)) {
+    return {
+      html: shell(
+        '<div class="card"><p style="margin:0 0 16px;color:var(--text-secondary);font-size:14px;">You need an active creator or affiliate subscription to access your referral link.</p>' +
+        '<a href="#/account" class="btn btn-primary">Back to account</a></div>'
+      ),
+      after: wireBack,
+    };
+  }
+
+  const referralLink = window.location.origin + window.location.pathname + '#/signup?ref=' + user.referralCode;
+
+  const referredUsers = db.users
+    .filter(function (u) { return u.referredBy === user.referralCode; })
+    .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+
+  function contributionFor(referredUserId) {
+    return (db.referralEarnings || [])
+      .filter(function (r) { return r.referrerId === user.id && r.referredUserId === referredUserId; })
+      .reduce(function (sum, r) { return sum + (Number(r.amount) || 0); }, 0);
+  }
+
+  function renderReferredList() {
+    if (!referredUsers.length) return '<p class="skeleton-text">No one has signed up with your link yet.</p>';
+    return referredUsers
+      .map(function (u) {
+        const contribution = contributionFor(u.id);
+        return (
+          '<div class="wd-row"><div><p class="wd-amount">' + escapeHtml(u.name) + '</p>' +
+          '<p class="wd-date">Joined ' + formatDate(u.createdAt) + '</p></div>' +
+          '<p class="wd-amount" style="color:var(--brand-deep);">\u20a6' + contribution.toLocaleString() + '</p></div>'
+        );
+      })
+      .join('');
+  }
+
+  const withdrawalMinimum = (db.platformSettings && db.platformSettings.withdrawalMinimum != null) ? db.platformSettings.withdrawalMinimum : 0;
+  let withdrawals = db.withdrawals
+    .filter(function (w) { return w.userId === user.id && w.walletType === 'referral'; })
+    .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+
+  function renderHistory() {
+    if (!withdrawals.length) return '<p class="skeleton-text">No withdrawal requests yet.</p>';
+    return withdrawals
+      .map(function (w) {
+        return (
+          '<div class="wd-row"><div><p class="wd-amount">\u20a6' + Number(w.amount || 0).toLocaleString() + '</p>' +
+          '<p class="wd-date">Requested ' + formatDate(w.createdAt) + '</p></div>' +
+          '<span class="wd-badge ' + escapeHtml(w.status) + '">' + escapeHtml(w.status) + '</span></div>'
+        );
+      })
+      .join('');
+  }
+
+  function render() {
+    const balance = typeof user.referralWallet === 'number' ? user.referralWallet : 0;
+    const formHtml = withdrawalCardHtml_(user, db, balance, withdrawalMinimum);
+
+    document.getElementById('app').innerHTML = shell(
+      '<div class="store-link-row"><span>Your referral link: <a href="' + referralLink + '">' + referralLink.replace(/^https?:\/\//, '') + '</a></span>' +
+      '<button class="copy-btn" id="copy-referral-btn" type="button">Copy</button></div>' +
+      '<div class="section-heading">People you\u2019ve referred</div>' +
+      renderReferredList() +
+      '<div class="section-heading">Wallet</div>' +
+      '<div class="stat-grid"><div class="stat-card"><p class="stat-label">Wallet balance</p><p class="stat-value">\u20a6' + balance.toLocaleString() + '</p></div></div>' +
+      '<div class="card"><div id="wd-alert" class="alert"></div>' + formHtml + '</div>' +
+      '<div class="section-heading">Withdrawal history</div>' +
+      renderHistory()
+    );
+    wireBack();
+
+    const copyBtn = document.getElementById('copy-referral-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async function () {
+        try {
+          await navigator.clipboard.writeText(referralLink);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+        } catch (e) { /* clipboard unavailable */ }
+      });
+    }
+
+    wireWithdrawalWidget_({
+      user: user, db: db, walletType: 'referral', walletField: 'referralWallet',
+      balance: balance, withdrawalMinimum: withdrawalMinimum,
+      onCountrySaved: function (saved) {
+        db = saved;
+        user = db.users.find(function (u) { return u.id === user.id; }) || user;
+        GroviaAPI.setSession(user);
+        render();
+      },
+      onSubmitted: function (saved) {
+        db = saved;
+        user = db.users.find(function (u) { return u.id === user.id; }) || user;
+        withdrawals = db.withdrawals
+          .filter(function (w) { return w.userId === user.id && w.walletType === 'referral'; })
+          .sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt); });
+        render();
+      },
+    });
+  }
+
+  return { html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>', after: render };
+}
+
+/* -------------------------------------------------------------- account */
+async function viewAccount() {
+  let db, user;
+  try {
+    db = await GroviaAPI.getDb(true);
+    user = GroviaAPI.getSession();
+    const fresh = db.users.find(function (u) { return u.id === user.id; });
+    if (fresh) { user = fresh; GroviaAPI.setSession(user); }
+  } catch (err) {
+    return { html: '<div class="wrap"><p class="skeleton-text">Couldn\u2019t load your account. Refresh to try again.</p></div>' };
+  }
+
+  const NAME_MAX = 80;
+
+  function subLine(label, sub, dashboardPath) {
+    let statusText, statusClass;
+    if (GroviaAPI.isSubActive(sub) && sub.active) {
+      statusText = 'Active until ' + formatDate(sub.expiresAt);
+      statusClass = 'active';
+    } else if (GroviaAPI.isSubActive(sub)) {
+      statusText = 'Grace period until ' + formatDate(sub.graceUntil);
+      statusClass = 'grace';
+    } else {
+      statusText = 'Not subscribed';
+      statusClass = null;
+    }
+    return (
+      '<div class="acct-sub-row"><div><p class="acct-sub-label">' + escapeHtml(label) + '</p>' +
+      '<p class="acct-sub-status">' + escapeHtml(statusText) + '</p></div>' +
+      (statusClass ? '<span class="nav-badge ' + statusClass + '">' + (statusClass === 'active' ? 'active' : 'grace') + '</span>' : '') +
+      '</div>'
+    );
+  }
+
+  function render() {
+    const referralLink = window.location.origin + window.location.pathname + '#/signup?ref=' + user.referralCode;
+
+    const html =
+      '<div class="card" style="margin-bottom:18px;">' +
+      '<div id="name-alert" class="alert"></div>' +
+      '<form id="name-form" novalidate>' +
+      '<div class="field"><label for="acct-name">Full name</label>' +
+      '<input type="text" id="acct-name" maxlength="' + NAME_MAX + '" value="' + escapeHtml(user.name || '') + '" required /></div>' +
+      '<div class="field"><label>Email</label><p class="field-hint" style="margin-top:0;">' + escapeHtml(user.email) + ' \u2014 contact support to change your email.</p></div>' +
+      '<button type="submit" class="btn btn-primary btn-wide" id="name-submit-btn">Save changes</button>' +
+      '</form></div>' +
+
+      '<div class="card" style="margin-bottom:18px;">' +
+      '<div id="pw-alert" class="alert"></div>' +
+      '<p style="margin:0 0 12px;font-size:13.5px;color:var(--text-secondary);">We\u2019ll email you a link to set a new password.</p>' +
+      '<button type="button" class="btn btn-outline btn-wide" id="pw-reset-btn">Send password reset email</button>' +
+      '</div>' +
+
+      '<div class="section-heading">Referrals</div>' +
+      '<div class="store-link-row"><span>Your referral link: <a href="' + referralLink + '">' + referralLink.replace(/^https?:\/\//, '') + '</a></span>' +
+      '<button class="copy-btn" id="copy-referral-btn" type="button">Copy</button></div>' +
+      '<p class="field-hint" style="margin:-12px 0 20px;"><a href="#/referrals" style="color:var(--brand-deep);font-weight:600;">View who you\u2019ve referred and your earnings \u2192</a></p>' +
+
+      '<div class="section-heading">Subscriptions</div>' +
+      '<div class="card">' +
+      subLine('Creator', user.creatorSub, '/creator/dashboard') +
+      '<div style="height:10px;"></div>' +
+      subLine('Affiliate', user.affiliateSub, '/affiliate/dashboard') +
+      '</div>';
+
+    document.getElementById('app').innerHTML = '<div class="wrap"><h1 class="page-title">Account settings</h1><p class="page-sub">Manage your profile and subscriptions.</p>' + html + '</div>';
+
+    document.getElementById('name-form').addEventListener('submit', onSaveName);
+    document.getElementById('pw-reset-btn').addEventListener('click', onSendReset);
+
+    const copyBtn = document.getElementById('copy-referral-btn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async function () {
+        try {
+          await navigator.clipboard.writeText(referralLink);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+        } catch (e) { /* clipboard unavailable */ }
+      });
+    }
+  }
+
+  async function onSaveName(e) {
+    e.preventDefault();
+    const btn = document.getElementById('name-submit-btn');
+    const name = document.getElementById('acct-name').value.trim();
+    function showAlert(msg, kind) {
+      const el = document.getElementById('name-alert');
+      el.textContent = msg; el.className = 'alert ' + (kind || 'error');
+    }
+    document.getElementById('name-alert').className = 'alert';
+    if (!name) { showAlert('Your name can\u2019t be empty.'); return; }
+
+    btn.disabled = true; btn.textContent = 'Saving\u2026';
+    try {
+      const saved = await GroviaAPI.pushDb(function (draft) {
+        const existing = draft.users.find(function (u) { return u.id === user.id; });
+        if (existing) existing.name = name;
+      });
+      db = saved;
+      user = db.users.find(function (u) { return u.id === user.id; });
+      GroviaAPI.setSession(user);
+      showAlert('Changes saved.', 'info');
+      btn.disabled = false; btn.textContent = 'Save changes';
+    } catch (err) {
+      showAlert('Something went wrong. Please try again.');
+      btn.disabled = false; btn.textContent = 'Save changes';
+    }
+  }
+
+  async function onSendReset() {
+    const btn = document.getElementById('pw-reset-btn');
+    function showAlert(msg, kind) {
+      const el = document.getElementById('pw-alert');
+      el.textContent = msg; el.className = 'alert ' + (kind || 'error');
+    }
+    document.getElementById('pw-alert').className = 'alert';
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    try {
+      await GroviaAPI.requestPasswordReset(user.email);
+      showAlert('Check your email for a reset link. It expires in 1 hour.', 'info');
+    } catch (err) {
+      showAlert('Something went wrong. Please try again.');
+    }
+    btn.disabled = false; btn.textContent = 'Send password reset email';
+  }
+
+  return { html: '<div class="wrap"><p class="skeleton-text">Loading…</p></div>', after: render };
+}
+</script>
+
+</body>
+</html>

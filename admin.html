@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Admin — Grovia</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" href="/favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  :root {
+    --bg: #F7FAF0; --surface: #FFFFFF; --surface-soft: #F1F6E8; --dark: #12210A;
+    --text-primary: #14210A; --text-secondary: #607057; --text-muted: #87927F; --text-inverse: #F7FAF0;
+    --brand: #639922; --brand-hover: #4F7E18; --brand-light: #EAF3DE; --brand-deep: #27500A;
+    --danger: #B3261E; --danger-light: #FBDADA; --warn: #8A5A00; --warn-light: #FBE8C8;
+    --info: #1E4C8C; --info-light: #E7EFFB;
+    --border: rgba(20, 33, 10, 0.10);
+    --shadow-sm: 0 4px 12px rgba(20, 33, 10, 0.06);
+    --shadow-md: 0 12px 32px rgba(20, 33, 10, 0.10);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; background: var(--bg); color: var(--text-primary); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 42px; padding: 0 18px; border-radius: 10px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: background 0.15s ease, opacity 0.15s ease; font-family: inherit; white-space: nowrap; }
+  .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn-primary { background: var(--brand); color: var(--text-inverse); }
+  .btn-primary:hover { background: var(--brand-hover); }
+  .btn-outline { background: var(--surface); color: var(--text-primary); border: 1.5px solid var(--border); }
+  .btn-ghost { background: var(--brand-light); color: var(--brand-deep); }
+  .btn-danger { background: var(--danger-light); color: var(--danger); }
+  .btn-sm { min-height: 34px; padding: 0 12px; font-size: 13px; border-radius: 8px; }
+  .btn-wide { width: 100%; }
+
+  header.topbar { position: sticky; top: 0; z-index: 30; padding-top: calc(var(--safe-top) + 12px); padding-bottom: 12px; background: rgba(247,250,240,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .topbar-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; }
+  .brand .tag { font-size: 11px; font-weight: 700; background: var(--dark); color: var(--text-inverse); padding: 2px 7px; border-radius: 6px; letter-spacing: 0.02em; }
+  .topbar-right { display: flex; align-items: center; gap: 8px; }
+  .topbar-name { font-size: 13.5px; font-weight: 600; color: var(--text-secondary); }
+
+  nav.tabs { display: flex; gap: 4px; overflow-x: auto; margin-top: 12px; padding-bottom: 2px; -ms-overflow-style: none; scrollbar-width: none; }
+  nav.tabs::-webkit-scrollbar { display: none; }
+  nav.tabs a { flex: none; font-size: 13.5px; font-weight: 600; color: var(--text-secondary); padding: 8px 13px; border-radius: 8px; white-space: nowrap; }
+  nav.tabs a.active { background: var(--brand-light); color: var(--brand-deep); }
+  nav.tabs a:hover:not(.active) { background: var(--surface-soft); }
+
+  #app { padding: 24px 0 60px; min-height: 50vh; }
+  .page-title { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .page-sub { font-size: 13.5px; color: var(--text-secondary); margin: 0 0 22px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-sm); padding: 20px; }
+  .skeleton-text { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 14px; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; box-shadow: var(--shadow-sm); }
+  .stat-label { font-size: 12px; color: var(--text-muted); margin: 0 0 4px; }
+  .stat-value { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+  @media (min-width: 700px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+  .toolbar input[type="search"], .toolbar select {
+    height: 40px; padding: 0 12px; border: 1.5px solid var(--border); border-radius: 10px;
+    font-size: 14px; font-family: inherit; background: var(--surface); color: var(--text-primary);
+  }
+  .toolbar input[type="search"] { flex: 1; min-width: 160px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow-sm); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 560px; }
+  thead th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); padding: 12px 14px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  tbody td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--surface-soft); }
+  .cell-muted { color: var(--text-muted); }
+  .cell-strong { font-weight: 700; }
+  .empty-row td { text-align: center; padding: 40px 14px; color: var(--text-muted); }
+
+  .pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+  .pill-active { background: var(--brand-light); color: var(--brand-deep); }
+  .pill-grace { background: var(--warn-light); color: var(--warn); }
+  .pill-expired { background: #EFEFE9; color: var(--text-muted); }
+  .pill-paid { background: var(--brand-light); color: var(--brand-deep); }
+  .pill-pending { background: var(--warn-light); color: var(--warn); }
+  .pill-rejected { background: var(--danger-light); color: var(--danger); }
+  .pill-approved { background: var(--info-light); color: var(--info); }
+  .pill-processing { background: var(--info-light); color: var(--info); }
+  .pill-failed { background: var(--danger-light); color: var(--danger); }
+  .pill-admin { background: var(--dark); color: var(--text-inverse); }
+  .flag-unverified { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: var(--warn-light); color: var(--warn); margin-left: 6px; }
+
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 9px;
+    font-size: 14px; font-family: inherit; color: var(--text-primary); background: var(--surface);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; border-color: var(--brand); }
+  .field-hint { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; }
+  .field-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .alert { display: none; font-size: 13px; border-radius: 9px; padding: 9px 12px; margin-bottom: 14px; }
+  .alert.error { display: block; background: var(--danger-light); color: var(--danger); }
+  .alert.info { display: block; background: var(--brand-light); color: var(--brand-deep); }
+
+  .gate-card { max-width: 420px; margin: 60px auto; text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow-md); padding: 32px 26px; }
+  .gate-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--brand-light); color: var(--brand-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 24px; }
+  .gate-card h1 { font-size: 19px; font-weight: 800; margin: 0 0 8px; }
+  .gate-card p { font-size: 13.5px; color: var(--text-secondary); margin: 0 0 18px; }
+
+  .role-perms { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .perm-chip { display: flex; align-items: center; gap: 6px; font-size: 12.5px; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; }
+  .perm-chip input { margin: 0; }
+
+  .role-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow-sm); margin-bottom: 12px; }
+  .role-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+  .role-name { font-size: 15px; font-weight: 700; }
+  .actions-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+  .section-heading { font-size: 14.5px; font-weight: 700; margin: 26px 0 12px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="topbar-row">
+      <div class="brand"><span>Grovia</span><span class="tag">ADMIN</span></div>
+      <div class="topbar-right" id="topbar-right"></div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<script>
+/* ============================================================================
+ * GROVIA ADMIN — single-page app
+ * ==========================================================================*/
+
+/* ---------------------------------------------------------------- API ---- */
+const GroviaAPI = (function () {
+  'use strict';
+
+  // TODO: replace with your deployed Apps Script Web App URL (same as index.html).
+  const API_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+  const SESSION_KEY = 'grovia_session';
+
+  async function apiGet() {
+    const res = await fetch(API_URL, { method: 'GET' });
+    if (!res.ok) throw new Error('network_error_' + res.status);
+    return res.json();
+  }
+
+  async function apiPost(action, payload) {
+    const body = JSON.stringify(Object.assign({ action: action }, payload || {}));
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: body,
+    });
+    if (!res.ok) throw new Error('network_error_' + res.status);
+    return res.json();
+  }
+
+  let _dbCache = null;
+
+  async function getDb(force) {
+    if (_dbCache && !force) return _dbCache;
+    _dbCache = await apiGet();
+    return _dbCache;
+  }
+
+  async function pushDb(mutator, maxRetries) {
+    maxRetries = typeof maxRetries === 'number' ? maxRetries : 3;
+    let db = await getDb(true);
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      const draft = JSON.parse(JSON.stringify(db));
+      mutator(draft);
+      const result = await apiPost('write', { version: draft.version, data: draft });
+      if (result.error === 'version_conflict') {
+        db = result.current;
+        _dbCache = db;
+        continue;
+      }
+      if (result.error) throw new Error(result.error);
+      _dbCache = result.data;
+      return result.data;
+    }
+    throw new Error('write_failed_after_retries');
+  }
+
+  function getSession() {
+    try {
+      const raw = localStorage.getItem(SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function setSession(user) { localStorage.setItem(SESSION_KEY, JSON.stringify(user)); }
+  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+  function isLoggedIn() { return !!getSession(); }
+
+  function isSubActive(sub) {
+    if (!sub) return false;
+    if (sub.active) return true;
+    if (sub.graceUntil && Date.now() < new Date(sub.graceUntil).getTime()) return true;
+    return false;
+  }
+
+  function hasPermission(user, db, permission) {
+    if (!user || !user.roleId || !db) return false;
+    const role = (db.roles || []).find(function (r) { return r.id === user.roleId; });
+    if (!role) return false;
+    if (role.name === 'Super Admin') return true;
+    return role.permissions.indexOf(permission) !== -1;
+  }
+
+  function isSuperAdmin(user, db) {
+    if (!user || !user.roleId || !db) return false;
+    const role = (db.roles || []).find(function (r) { return r.id === user.roleId; });
+    return !!role && role.name === 'Super Admin';
+  }
+
+  async function initiateTransfer(withdrawalId, adminUserId) {
+    return apiPost('initiateTransfer', { withdrawalId: withdrawalId, adminUserId: adminUserId });
+  }
+
+  return {
+    getDb: getDb, pushDb: pushDb,
+    getSession: getSession, setSession: setSession, clearSession: clearSession, isLoggedIn: isLoggedIn,
+    isSubActive: isSubActive, hasPermission: hasPermission, isSuperAdmin: isSuperAdmin,
+    initiateTransfer: initiateTransfer,
+  };
+})();
+
+/* ---------------------------------------------------------------- utils -- */
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+function formatDate(iso) {
+  if (!iso) return '\u2014';
+  try { return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }); }
+  catch (e) { return iso; }
+}
+function money(n) { return '\u20a6' + (Number(n) || 0).toLocaleString(); }
+function firstName(name) { return (name || 'Account').split(' ')[0]; }
+
+const ALL_PERMISSIONS = [
+  { id: 'manage_withdrawals', label: 'Manage withdrawals' },
+  { id: 'manage_countries', label: 'Manage payout countries' },
+  { id: 'manage_users', label: 'Manage users' },
+  { id: 'manage_products', label: 'Manage products' },
+  { id: 'manage_roles', label: 'Manage roles' },
+  { id: 'manage_disputes', label: 'Manage disputes' },
+  { id: 'view_analytics', label: 'View analytics' },
+  { id: 'override_subscriptions', label: 'Override subscriptions' },
+];
+
+/* --------------------------------------------------------------- router -- */
+let currentRoute = '/';
+let currentParams = {};
+let cachedUser = null;
+let cachedDb = null;
+
+const routes = [
+  { path: '/', view: viewDashboard, permission: 'view_analytics' },
+  { path: '/users', view: viewUsers, permission: 'manage_users' },
+  { path: '/products', view: viewProducts, permission: 'manage_products' },
+  { path: '/orders', view: viewOrders, permission: 'view_analytics' },
+  { path: '/withdrawals', view: viewWithdrawals, permission: 'manage_withdrawals' },
+  { path: '/countries', view: viewCountries, permission: 'manage_countries' },
+  { path: '/roles', view: viewRoles, permission: 'manage_roles' },
+  { path: '/settings', view: viewSettings, superAdminOnly: true },
+];
+
+function parseHash() {
+  let h = window.location.hash;
+  if (!h) h = '#/';
+  if (h.charAt(0) !== '#' || h.charAt(1) !== '/') return { path: '/', params: {} };
+  h = h.slice(1);
+  const parts = h.split('?');
+  const params = {};
+  if (parts[1]) new URLSearchParams(parts[1]).forEach(function (v, k) { params[k] = v; });
+  return { path: parts[0] || '/', params: params };
+}
+function go(path) { window.location.hash = '#' + path; }
+function matchRoute(path) { return routes.find(function (r) { return r.path === path; }) || null; }
+
+async function renderRoute() {
+  const parsed = parseHash();
+  currentRoute = parsed.path;
+  currentParams = parsed.params;
+
+  const app = document.getElementById('app');
+  const user = GroviaAPI.getSession();
+
+  if (!user) {
+    renderTopbar(null, null);
+    app.innerHTML = gateCard('\uD83D\uDD12', 'Log in required', 'You need to log in with an admin account to view this page.', 'index.html#/login', 'Go to log in');
+    return;
+  }
+
+  let db;
+  try {
+    db = await GroviaAPI.getDb(true);
+  } catch (err) {
+    app.innerHTML = '<div class="wrap"><p class="skeleton-text">Couldn\u2019t reach Grovia. Refresh to try again.</p></div>';
+    return;
+  }
+  const freshUser = (db.users || []).find(function (u) { return u.id === user.id; }) || user;
+  GroviaAPI.setSession(freshUser);
+  cachedUser = freshUser;
+  cachedDb = db;
+
+  renderTopbar(freshUser, db);
+
+  if (!isAnyAdmin(freshUser, db)) {
+    app.innerHTML = gateCard('\u26D4', 'No admin access', 'Your account doesn\u2019t have an admin role. Ask a Super Admin to grant you one.', 'index.html', 'Back to Grovia');
+    return;
+  }
+
+  const match = matchRoute(currentRoute);
+  if (!match) { go('/'); return; }
+
+  const allowed = match.superAdminOnly
+    ? GroviaAPI.isSuperAdmin(freshUser, db)
+    : GroviaAPI.hasPermission(freshUser, db, match.permission);
+
+  if (!allowed) {
+    app.innerHTML = gateCard('\uD83D\uDEAB', 'Not permitted', 'You don\u2019t have the permission needed to view this section.', '#/', 'Back to dashboard');
+    return;
+  }
+
+  app.innerHTML = '<div class="wrap"><p class="skeleton-text">Loading\u2026</p></div>';
+  try {
+    const result = await match.view(db, freshUser, currentParams);
+    app.innerHTML = result.html;
+    if (result.after) result.after();
+  } catch (err) {
+    console.error(err);
+    app.innerHTML = '<div class="wrap"><p class="skeleton-text">Something went wrong loading this page.</p></div>';
+  }
+  if (window.lucide) lucide.createIcons();
+  window.scrollTo(0, 0);
+}
+
+function isAnyAdmin(user, db) {
+  if (!user || !user.roleId) return false;
+  const role = (db.roles || []).find(function (r) { return r.id === user.roleId; });
+  return !!role;
+}
+
+function gateCard(icon, title, body, href, cta) {
+  return (
+    '<div class="wrap"><div class="gate-card">' +
+    '<div class="gate-icon">' + icon + '</div>' +
+    '<h1>' + escapeHtml(title) + '</h1>' +
+    '<p>' + escapeHtml(body) + '</p>' +
+    '<a href="' + href + '" class="btn btn-primary btn-wide">' + escapeHtml(cta) + '</a>' +
+    '</div></div>'
+  );
+}
+
+window.addEventListener('hashchange', renderRoute);
+window.addEventListener('DOMContentLoaded', renderRoute);
+
+/* ------------------------------------------------------------------- nav - */
+const TABS = [
+  { path: '/', label: 'Dashboard', permission: 'view_analytics' },
+  { path: '/users', label: 'Users', permission: 'manage_users' },
+  { path: '/products', label: 'Products', permission: 'manage_products' },
+  { path: '/orders', label: 'Orders', permission: 'view_analytics' },
+  { path: '/withdrawals', label: 'Withdrawals', permission: 'manage_withdrawals' },
+  { path: '/countries', label: 'Countries', permission: 'manage_countries' },
+  { path: '/roles', label: 'Roles', permission: 'manage_roles' },
+  { path: '/settings', label: 'Settings', superAdminOnly: true },
+];
+
+function renderTopbar(user, db) {
+  const right = document.getElementById('topbar-right');
+  const tabsEl = document.getElementById('tabs');
+
+  if (!user) {
+    right.innerHTML = '<a href="index.html" class="btn btn-outline btn-sm">Back to Grovia</a>';
+    tabsEl.innerHTML = '';
+    return;
+  }
+
+  right.innerHTML =
+    '<span class="topbar-name">' + escapeHtml(firstName(user.name)) + '</span>' +
+    '<a href="index.html" class="btn btn-outline btn-sm">Main site</a>' +
+    '<button class="btn btn-ghost btn-sm" id="admin-logout-btn" type="button">Log out</button>';
+
+  const logoutBtn = document.getElementById('admin-logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function () {
+      GroviaAPI.clearSession();
+      window.location.href = 'index.html';
+    });
+  }
+
+  if (!db || !isAnyAdmin(user, db)) { tabsEl.innerHTML = ''; return; }
+
+  const visible = TABS.filter(function (t) {
+    return t.superAdminOnly ? GroviaAPI.isSuperAdmin(user, db) : GroviaAPI.hasPermission(user, db, t.permission);
+  });
+  tabsEl.innerHTML = visible.map(function (t) {
+    const active = currentRoute === t.path ? ' active' : '';
+    return '<a href="#' + t.path + '" class="' + active.trim() + '">' + t.label + '</a>';
+  }).join('');
+}
+
+/* ================================================================ VIEWS = */
+
+/* -------------------------------------------------------------- dashboard */
+async function viewDashboard(db) {
+  const users = db.users || [];
+  const products = db.products || [];
+  const orders = db.orders || [];
+  const withdrawals = db.withdrawals || [];
+
+  const creators = users.filter(function (u) { return GroviaAPI.isSubActive(u.creatorSub); }).length;
+  const affiliates = users.filter(function (u) { return GroviaAPI.isSubActive(u.affiliateSub); }).length;
+  const paidOrders = orders.filter(function (o) { return o.status === 'paid'; });
+  const revenue = paidOrders.reduce(function (sum, o) { return sum + (Number(o.platformCut) || 0); }, 0);
+  const pendingWithdrawals = withdrawals.filter(function (w) { return w.status === 'requested'; }).length;
+  const referralPayouts = (db.referralEarnings || []).reduce(function (sum, r) { return sum + (Number(r.amount) || 0); }, 0);
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Dashboard</h1><p class="page-sub">A snapshot of the whole platform.</p>' +
+    '<div class="stat-grid">' +
+    statCard('Total users', users.length) +
+    statCard('Active creators', creators) +
+    statCard('Active affiliates', affiliates) +
+    statCard('Products listed', products.length) +
+    statCard('Orders paid', paidOrders.length) +
+    statCard('Platform revenue', money(revenue)) +
+    statCard('Pending withdrawals', pendingWithdrawals) +
+    statCard('Total orders', orders.length) +
+    statCard('Referral payouts', money(referralPayouts)) +
+    '</div>' +
+    '<div class="section-heading">Recent orders</div>' +
+    renderOrdersTable(orders.slice().sort(sortByCreatedDesc).slice(0, 8), db) +
+    '</div>';
+
+  return { html: html };
+}
+
+function statCard(label, value) {
+  return '<div class="stat-card"><p class="stat-label">' + escapeHtml(label) + '</p><p class="stat-value">' + value + '</p></div>';
+}
+function sortByCreatedDesc(a, b) { return new Date(b.createdAt) - new Date(a.createdAt); }
+
+/* ------------------------------------------------------------------ users */
+async function viewUsers(db, currentUser) {
+  const canManageRoles = GroviaAPI.hasPermission(currentUser, db, 'manage_roles');
+
+  function rows(filterText) {
+    const q = (filterText || '').toLowerCase();
+    return (db.users || []).filter(function (u) {
+      return !q || u.name.toLowerCase().indexOf(q) !== -1 || u.email.toLowerCase().indexOf(q) !== -1;
+    });
+  }
+
+  function subPill(sub) {
+    if (!sub) return '<span class="pill pill-expired">\u2014</span>';
+    if (sub.active) return '<span class="pill pill-active">Active</span>';
+    if (GroviaAPI.isSubActive(sub)) return '<span class="pill pill-grace">Grace</span>';
+    return '<span class="pill pill-expired">Off</span>';
+  }
+
+  function roleCell(u) {
+    const role = u.roleId ? (db.roles || []).find(function (r) { return r.id === u.roleId; }) : null;
+    const badge = role ? '<span class="pill pill-admin">' + escapeHtml(role.name) + '</span>' : '<span class="cell-muted">\u2014</span>';
+    if (!canManageRoles) return badge;
+    const options = ['<option value="">No admin role</option>'].concat(
+      (db.roles || []).map(function (r) {
+        return '<option value="' + r.id + '"' + (u.roleId === r.id ? ' selected' : '') + '>' + escapeHtml(r.name) + '</option>';
+      })
+    ).join('');
+    return '<select class="role-select" data-user="' + u.id + '" style="font-size:12.5px;padding:5px 8px;border-radius:7px;border:1.5px solid var(--border);">' + options + '</select>';
+  }
+
+  function referredByCell(u) {
+    if (!u.referredBy) return '<span class="cell-muted">\u2014</span>';
+    const referrer = (db.users || []).find(function (x) { return x.referralCode === u.referredBy; });
+    return referrer ? escapeHtml(referrer.name) : '<span class="cell-muted">\u2014</span>';
+  }
+
+  function tableHtml(list) {
+    if (!list.length) return '<div class="table-wrap"><table><tbody><tr class="empty-row"><td>No users match.</td></tr></tbody></table></div>';
+    return (
+      '<div class="table-wrap"><table><thead><tr>' +
+      '<th>Name</th><th>Email</th><th>Creator</th><th>Affiliate</th><th>Creator wallet</th><th>Affiliate wallet</th><th>Referred by</th><th>Admin role</th><th>Joined</th>' +
+      '</tr></thead><tbody>' +
+      list.map(function (u) {
+        return (
+          '<tr><td class="cell-strong">' + escapeHtml(u.name) + '</td>' +
+          '<td class="cell-muted">' + escapeHtml(u.email) + '</td>' +
+          '<td>' + subPill(u.creatorSub) + '</td>' +
+          '<td>' + subPill(u.affiliateSub) + '</td>' +
+          '<td>' + money(u.creatorWallet) + '</td>' +
+          '<td>' + money(u.affiliateWallet) + '</td>' +
+          '<td class="cell-muted">' + referredByCell(u) + '</td>' +
+          '<td>' + roleCell(u) + '</td>' +
+          '<td class="cell-muted">' + formatDate(u.createdAt) + '</td></tr>'
+        );
+      }).join('') +
+      '</tbody></table></div>'
+    );
+  }
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Users</h1><p class="page-sub">' + (db.users || []).length + ' registered users.</p>' +
+    '<div id="role-alert" class="alert"></div>' +
+    '<div class="toolbar"><input type="search" id="user-search" placeholder="Search by name or email\u2026" /></div>' +
+    '<div id="users-table">' + tableHtml(rows('')) + '</div>' +
+    '</div>';
+
+  return {
+    html: html,
+    after: function () {
+      const search = document.getElementById('user-search');
+      search.addEventListener('input', function () {
+        document.getElementById('users-table').innerHTML = tableHtml(rows(search.value));
+        wireRoleSelects();
+      });
+      wireRoleSelects();
+
+      function wireRoleSelects() {
+        document.querySelectorAll('.role-select').forEach(function (sel) {
+          sel.addEventListener('change', async function () {
+            const userId = sel.getAttribute('data-user');
+            const newRoleId = sel.value || null;
+            sel.disabled = true;
+            try {
+              await GroviaAPI.pushDb(function (draft) {
+                const u = draft.users.find(function (x) { return x.id === userId; });
+                if (u) u.roleId = newRoleId;
+              });
+              renderRoute();
+            } catch (err) {
+              const el = document.getElementById('role-alert');
+              el.textContent = 'Couldn\u2019t update that user\u2019s role. Please try again.';
+              el.className = 'alert error';
+              sel.disabled = false;
+            }
+          });
+        });
+      }
+    },
+  };
+}
+
+/* --------------------------------------------------------------- products */
+async function viewProducts(db) {
+  function storeName(storeId) {
+    const store = (db.stores || []).find(function (s) { return s.id === storeId; });
+    return store ? store.name : '\u2014';
+  }
+  function ownerName(storeId) {
+    const store = (db.stores || []).find(function (s) { return s.id === storeId; });
+    const owner = store ? (db.users || []).find(function (u) { return u.id === store.ownerId; }) : null;
+    return owner ? owner.name : '\u2014';
+  }
+
+  const list = db.products || [];
+  const rowsHtml = list.length
+    ? list.map(function (p) {
+        return (
+          '<tr><td class="cell-strong">' + escapeHtml(p.name) + '</td>' +
+          '<td class="cell-muted">' + escapeHtml(storeName(p.storeId)) + '</td>' +
+          '<td class="cell-muted">' + escapeHtml(ownerName(p.storeId)) + '</td>' +
+          '<td>' + money(p.price) + '</td>' +
+          '<td>' + (p.commissionRate || 0) + '%</td>' +
+          '<td class="cell-muted">' + formatDate(p.createdAt) + '</td>' +
+          '<td><button class="btn btn-danger btn-sm" data-remove-product="' + p.id + '">Remove</button></td></tr>'
+        );
+      }).join('')
+    : '<tr class="empty-row"><td colspan="7">No products listed yet.</td></tr>';
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Products</h1><p class="page-sub">' + list.length + ' products across all stores.</p>' +
+    '<div id="products-alert" class="alert"></div>' +
+    '<div class="table-wrap"><table><thead><tr>' +
+    '<th>Product</th><th>Store</th><th>Creator</th><th>Price</th><th>Commission</th><th>Listed</th><th></th>' +
+    '</tr></thead><tbody id="products-tbody">' + rowsHtml + '</tbody></table></div>' +
+    '</div>';
+
+  return {
+    html: html,
+    after: function () {
+      document.querySelectorAll('[data-remove-product]').forEach(function (btn) {
+        btn.addEventListener('click', async function () {
+          const productId = btn.getAttribute('data-remove-product');
+          if (!confirm('Remove this product from Grovia? This cannot be undone.')) return;
+          btn.disabled = true;
+          btn.textContent = 'Removing\u2026';
+          try {
+            await GroviaAPI.pushDb(function (draft) {
+              draft.products = draft.products.filter(function (p) { return p.id !== productId; });
+            });
+            renderRoute();
+          } catch (err) {
+            const el = document.getElementById('products-alert');
+            el.textContent = 'Couldn\u2019t remove that product. Please try again.';
+            el.className = 'alert error';
+            btn.disabled = false;
+            btn.textContent = 'Remove';
+          }
+        });
+      });
+    },
+  };
+}
+
+/* ------------------------------------------------------------------ orders */
+function orderPill(status) {
+  if (status === 'paid') return '<span class="pill pill-paid">Paid</span>';
+  return '<span class="pill pill-pending">Pending</span>';
+}
+
+function renderOrdersTable(list, db) {
+  if (!list.length) return '<div class="table-wrap"><table><tbody><tr class="empty-row"><td>No orders yet.</td></tr></tbody></table></div>';
+  function productName(id) {
+    const p = (db.products || []).find(function (x) { return x.id === id; });
+    return p ? p.name : '\u2014';
+  }
+  return (
+    '<div class="table-wrap"><table><thead><tr>' +
+    '<th>Product</th><th>Buyer</th><th>Amount</th><th>Status</th><th>Platform cut</th><th>Affiliate</th><th>Creator</th><th>Date</th>' +
+    '</tr></thead><tbody>' +
+    list.map(function (o) {
+      return (
+        '<tr><td class="cell-strong">' + escapeHtml(productName(o.productId)) + '</td>' +
+        '<td class="cell-muted">' + escapeHtml(o.buyerEmail) + '</td>' +
+        '<td>' + money(o.basePrice) + '</td>' +
+        '<td>' + orderPill(o.status) + '</td>' +
+        '<td class="cell-muted">' + (o.status === 'paid' ? money(o.platformCut) : '\u2014') + '</td>' +
+        '<td class="cell-muted">' + (o.status === 'paid' ? money(o.affiliateCommission) : '\u2014') + '</td>' +
+        '<td class="cell-muted">' + (o.status === 'paid' ? money(o.creatorEarning) : '\u2014') + '</td>' +
+        '<td class="cell-muted">' + formatDate(o.createdAt) + '</td></tr>'
+      );
+    }).join('') +
+    '</tbody></table></div>'
+  );
+}
+
+async function viewOrders(db) {
+  const orders = (db.orders || []).slice().sort(sortByCreatedDesc);
+
+  function filtered(status) {
+    if (!status) return orders;
+    return orders.filter(function (o) { return o.status === status; });
+  }
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Orders</h1><p class="page-sub">' + orders.length + ' orders across the platform.</p>' +
+    '<div class="toolbar"><select id="order-filter">' +
+    '<option value="">All statuses</option><option value="paid">Paid</option><option value="pending">Pending</option>' +
+    '</select></div>' +
+    '<div id="orders-table">' + renderOrdersTable(orders, db) + '</div>' +
+    '</div>';
+
+  return {
+    html: html,
+    after: function () {
+      document.getElementById('order-filter').addEventListener('change', function (e) {
+        document.getElementById('orders-table').innerHTML = renderOrdersTable(filtered(e.target.value), db);
+      });
+    },
+  };
+}
+
+/* ------------------------------------------------------------- withdrawals */
+function withdrawalPill(status) {
+  if (status === 'paid') return '<span class="pill pill-paid">Paid</span>';
+  if (status === 'processing') return '<span class="pill pill-processing">Processing</span>';
+  if (status === 'failed') return '<span class="pill pill-failed">Failed</span>';
+  if (status === 'approved') return '<span class="pill pill-approved">Approved</span>';
+  if (status === 'rejected') return '<span class="pill pill-rejected">Rejected</span>';
+  return '<span class="pill pill-pending">Requested</span>';
+}
+function walletTypeLabel(walletType) {
+  if (walletType === 'creator') return 'Creator';
+  if (walletType === 'affiliate') return 'Affiliate';
+  if (walletType === 'referral') return 'Referral';
+  return '\u2014';
+}
+function walletFieldFor(walletType) {
+  if (walletType === 'creator') return 'creatorWallet';
+  if (walletType === 'affiliate') return 'affiliateWallet';
+  if (walletType === 'referral') return 'referralWallet';
+  return null;
+}
+
+async function viewWithdrawals(db, currentUser) {
+  function userName(id) {
+    const u = (db.users || []).find(function (x) { return x.id === id; });
+    return u ? u.name : '\u2014';
+  }
+  function userEmail(id) {
+    const u = (db.users || []).find(function (x) { return x.id === id; });
+    return u ? u.email : '';
+  }
+
+  const list = (db.withdrawals || []).slice().sort(sortByCreatedDesc);
+
+  // Withdrawal rows created before this build (no `country`/`payoutType`) can't
+  // go through initiateTransfer \u2014 there's nothing to send Flutterwave. Those
+  // still get the old manual Approve/Reject/Mark paid flow.
+  function isLegacyRequest(w) { return !w.country || !w.payoutType; }
+
+  function destinationFor(w) {
+    if (isLegacyRequest(w)) return '<span class="cell-muted">\u2014 (pre-payout-system request)</span>';
+    const dest = w.payoutType === 'mobile_money'
+      ? (w.network || '') + ' \u00b7 ' + (w.phoneNumber || '')
+      : (w.bankCode || '') + ' \u00b7 ' + (w.accountNumber || '');
+    const name = w.resolvedName || w.accountName || '\u2014';
+    const flag = w.verified
+      ? ''
+      : '<span class="flag-unverified" title="Self-entered account name, not confirmed by the bank">Unverified</span>';
+    return escapeHtml(w.country) + ' \u00b7 ' + escapeHtml(dest) + '<br><span class="cell-muted" style="font-size:12px;">' + escapeHtml(name) + '</span>' + flag;
+  }
+
+  function actionsFor(w) {
+    if (w.status === 'requested') {
+      if (isLegacyRequest(w)) {
+        return (
+          '<button class="btn btn-primary btn-sm" data-approve="' + w.id + '">Approve</button> ' +
+          '<button class="btn btn-danger btn-sm" data-reject="' + w.id + '">Reject</button>'
+        );
+      }
+      return (
+        '<button class="btn btn-primary btn-sm" data-send="' + w.id + '">Approve & send</button> ' +
+        '<button class="btn btn-danger btn-sm" data-reject="' + w.id + '">Reject</button>'
+      );
+    }
+    if (w.status === 'approved') { // legacy manual flow only \u2014 new requests skip straight to 'processing'
+      return '<button class="btn btn-ghost btn-sm" data-markpaid="' + w.id + '">Mark paid</button>';
+    }
+    if (w.status === 'processing') {
+      return '<span class="cell-muted">Sent to Flutterwave \u2014 awaiting confirmation</span>';
+    }
+    if (w.status === 'failed') {
+      return '<span class="cell-muted">' + escapeHtml(w.failureReason || w.lastError || 'Transfer failed') + '</span>';
+    }
+    return '<span class="cell-muted">\u2014</span>';
+  }
+
+  const rowsHtml = list.length
+    ? list.map(function (w) {
+        return (
+          '<tr><td class="cell-strong">' + escapeHtml(userName(w.userId)) + '<br><span class="cell-muted" style="font-weight:400;font-size:12px;">' + escapeHtml(userEmail(w.userId)) + '</span></td>' +
+          '<td class="cell-muted">' + walletTypeLabel(w.walletType) + '</td>' +
+          '<td>' + money(w.amount) + '</td>' +
+          '<td>' + destinationFor(w) + '</td>' +
+          '<td>' + withdrawalPill(w.status) + '</td>' +
+          '<td class="cell-muted">' + formatDate(w.createdAt) + '</td>' +
+          '<td>' + actionsFor(w) + '</td></tr>'
+        );
+      }).join('')
+    : '<tr class="empty-row"><td colspan="7">No withdrawal requests yet.</td></tr>';
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Withdrawals</h1><p class="page-sub">Review requests \u2014 verified accounts show the confirmed name; unverified ones are flagged for extra scrutiny.</p>' +
+    '<div id="wd-alert" class="alert"></div>' +
+    '<div class="table-wrap"><table><thead><tr>' +
+    '<th>User</th><th>Wallet</th><th>Amount</th><th>Destination</th><th>Status</th><th>Requested</th><th></th>' +
+    '</tr></thead><tbody id="wd-tbody">' + rowsHtml + '</tbody></table></div>' +
+    '</div>';
+
+  return {
+    html: html,
+    after: function () {
+      function showError(msg) {
+        const el = document.getElementById('wd-alert');
+        el.textContent = msg; el.className = 'alert error';
+      }
+
+      document.querySelectorAll('[data-approve]').forEach(function (btn) {
+        btn.addEventListener('click', function () { setStatus(btn.getAttribute('data-approve'), 'approved'); });
+      });
+      document.querySelectorAll('[data-reject]').forEach(function (btn) {
+        btn.addEventListener('click', function () { setStatus(btn.getAttribute('data-reject'), 'rejected'); });
+      });
+      document.querySelectorAll('[data-markpaid]').forEach(function (btn) {
+        btn.addEventListener('click', function () { markPaid(btn.getAttribute('data-markpaid')); });
+      });
+      document.querySelectorAll('[data-send]').forEach(function (btn) {
+        btn.addEventListener('click', function () { sendTransfer(btn.getAttribute('data-send'), btn); });
+      });
+
+      async function setStatus(id, status) {
+        try {
+          await GroviaAPI.pushDb(function (draft) {
+            const w = draft.withdrawals.find(function (x) { return x.id === id; });
+            if (w) { w.status = status; w.resolvedAt = new Date().toISOString(); }
+          });
+          renderRoute();
+        } catch (err) { showError('Couldn\u2019t update that request. Please try again.'); }
+      }
+
+      async function markPaid(id) {
+        try {
+          await GroviaAPI.pushDb(function (draft) {
+            const w = draft.withdrawals.find(function (x) { return x.id === id; });
+            if (!w) return;
+            const user = draft.users.find(function (u) { return u.id === w.userId; });
+            if (user) {
+              const field = walletFieldFor(w.walletType);
+              if (field) user[field] = Math.max(0, (user[field] || 0) - w.amount);
+            }
+            w.status = 'paid';
+            w.resolvedAt = new Date().toISOString();
+          });
+          renderRoute();
+        } catch (err) { showError('Couldn\u2019t mark that withdrawal paid. Please try again.'); }
+      }
+
+      async function sendTransfer(id, btn) {
+        btn.disabled = true; btn.textContent = 'Sending\u2026';
+        try {
+          const result = await GroviaAPI.initiateTransfer(id, currentUser.id);
+          if (result.error) {
+            showError('Couldn\u2019t send that transfer: ' + result.error + '. Check the country\u2019s FX rate is set on the Countries page.');
+            btn.disabled = false; btn.textContent = 'Approve & send';
+            return;
+          }
+          renderRoute();
+        } catch (err) {
+          showError('Couldn\u2019t reach Flutterwave. Please try again.');
+          btn.disabled = false; btn.textContent = 'Approve & send';
+        }
+      }
+    },
+  };
+}
+
+/* ------------------------------------------------------------------ countries */
+async function viewCountries(db) {
+  const countries = (db.supportedCountries || []).slice();
+
+  function statusNote(c) {
+    if (!c.payoutMethods.length) return '<span class="cell-muted">No Flutterwave payout rail yet</span>';
+    return c.verified
+      ? '<span class="pill pill-paid">Bank-verified</span>'
+      : '<span class="flag-unverified">Unverified</span>';
+  }
+
+  function methodsLabel(c) {
+    if (!c.payoutMethods.length) return '\u2014';
+    return c.payoutMethods.map(function (m) { return m === 'bank' ? 'Bank' : 'Mobile money'; }).join(' + ');
+  }
+
+  const rowsHtml = countries.map(function (c, i) {
+    const canActivate = c.payoutMethods.length > 0;
+    return (
+      '<tr data-row="' + i + '">' +
+      '<td class="cell-strong">' + escapeHtml(c.country) + '<br><span class="cell-muted" style="font-weight:400;font-size:12px;">' + escapeHtml(c.currency) + '</span></td>' +
+      '<td class="cell-muted">' + methodsLabel(c) + '</td>' +
+      '<td>' + statusNote(c) + '</td>' +
+      '<td><input type="number" step="0.01" min="0" class="cty-fxrate" value="' + c.fxRate + '" style="width:100px;" ' + (canActivate ? '' : 'disabled') + ' /></td>' +
+      '<td><input type="number" step="0.1" min="0" max="100" class="cty-fee" value="' + c.feePercent + '" style="width:80px;" ' + (canActivate ? '' : 'disabled') + ' /></td>' +
+      '<td><input type="checkbox" class="cty-active" ' + (c.active ? 'checked' : '') + ' ' + (canActivate ? '' : 'disabled') + ' /></td>' +
+      '<td><button class="btn btn-ghost btn-sm" data-save="' + i + '">Save</button></td>' +
+      '</tr>'
+    );
+  }).join('');
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Payout countries</h1>' +
+    '<p class="page-sub">All 30 of Flutterwave\u2019s African countries are listed. Only the ones with a working payout rail can be switched on \u2014 set a real FX rate before activating a country, or withdrawals there will fail at the transfer step.</p>' +
+    '<div id="cty-alert" class="alert"></div>' +
+    '<div class="table-wrap"><table><thead><tr>' +
+    '<th>Country</th><th>Payout methods</th><th>Verification</th><th>FX rate (\u20a6 \u2192 local)</th><th>Fee %</th><th>Active</th><th></th>' +
+    '</tr></thead><tbody>' + rowsHtml + '</tbody></table></div>' +
+    '</div>';
+
+  return {
+    html: html,
+    after: function () {
+      function showError(msg) {
+        const el = document.getElementById('cty-alert');
+        el.textContent = msg; el.className = 'alert error';
+      }
+      function showInfo(msg) {
+        const el = document.getElementById('cty-alert');
+        el.textContent = msg; el.className = 'alert info';
+      }
+
+      document.querySelectorAll('[data-save]').forEach(function (btn) {
+        btn.addEventListener('click', async function () {
+          const i = Number(btn.getAttribute('data-save'));
+          const row = document.querySelector('tr[data-row="' + i + '"]');
+          const fxRate = Number(row.querySelector('.cty-fxrate').value) || 0;
+          const feePercent = Number(row.querySelector('.cty-fee').value) || 0;
+          const active = row.querySelector('.cty-active').checked;
+          const countryName = countries[i].country;
+
+          if (active && fxRate <= 0) {
+            showError('Set a real FX rate before activating ' + countryName + '.');
+            return;
+          }
+
+          btn.disabled = true; btn.textContent = 'Saving\u2026';
+          try {
+            await GroviaAPI.pushDb(function (draft) {
+              const c = (draft.supportedCountries || []).find(function (x) { return x.country === countryName; });
+              if (c) { c.fxRate = fxRate; c.feePercent = feePercent; c.active = active; }
+            });
+            showInfo('Saved ' + countryName + '.');
+            renderRoute();
+          } catch (err) {
+            showError('Couldn\u2019t save that change. Please try again.');
+            btn.disabled = false; btn.textContent = 'Save';
+          }
+        });
+      });
+    },
+  };
+}
+
+/* -------------------------------------------------------------------- roles */
+async function viewRoles(db) {
+  const roles = db.roles || [];
+
+  function permChips(role, editable) {
+    return (
+      '<div class="role-perms">' +
+      ALL_PERMISSIONS.map(function (p) {
+        const checked = role.name === 'Super Admin' || role.permissions.indexOf(p.id) !== -1;
+        const disabled = role.name === 'Super Admin' || !editable;
+        return (
+          '<label class="perm-chip"><input type="checkbox" data-role="' + role.id + '" data-perm="' + p.id + '"' +
+          (checked ? ' checked' : '') + (disabled ? ' disabled' : '') + ' /> ' + p.label + '</label>'
+        );
+      }).join('') +
+      '</div>'
+    );
+  }
+
+  const roleCards = roles.map(function (r) {
+    const isSuper = r.name === 'Super Admin';
+    return (
+      '<div class="role-card">' +
+      '<div class="role-card-head"><span class="role-name">' + escapeHtml(r.name) + (isSuper ? ' <span class="pill pill-admin">protected</span>' : '') + '</span>' +
+      (isSuper ? '' : '<button class="btn btn-danger btn-sm" data-delete-role="' + r.id + '">Delete role</button>') +
+      '</div>' +
+      permChips(r, !isSuper) +
+      '</div>'
+    );
+  }).join('');
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Roles</h1><p class="page-sub">Control what each admin role can do. Super Admin always has every permission.</p>' +
+    '<div id="roles-alert" class="alert"></div>' +
+    '<div id="roles-list">' + roleCards + '</div>' +
+    '<div class="section-heading">Create a new role</div>' +
+    '<div class="card">' +
+    '<div class="field"><label for="new-role-name">Role name</label><input type="text" id="new-role-name" placeholder="e.g. Support Agent" /></div>' +
+    '<div class="field"><label>Permissions</label><div class="role-perms" id="new-role-perms">' +
+    ALL_PERMISSIONS.map(function (p) {
+      return '<label class="perm-chip"><input type="checkbox" value="' + p.id + '" /> ' + p.label + '</label>';
+    }).join('') +
+    '</div></div>' +
+    '<button class="btn btn-primary" id="create-role-btn">Create role</button>' +
+    '</div>' +
+    '</div>';
+
+  return {
+    html: html,
+    after: function () {
+      function showError(msg) {
+        const el = document.getElementById('roles-alert');
+        el.textContent = msg; el.className = 'alert error';
+      }
+
+      document.querySelectorAll('input[data-role]').forEach(function (cb) {
+        cb.addEventListener('change', async function () {
+          const roleId = cb.getAttribute('data-role');
+          const perm = cb.getAttribute('data-perm');
+          cb.disabled = true;
+          try {
+            await GroviaAPI.pushDb(function (draft) {
+              const role = draft.roles.find(function (r) { return r.id === roleId; });
+              if (!role) return;
+              const idx = role.permissions.indexOf(perm);
+              if (cb.checked && idx === -1) role.permissions.push(perm);
+              if (!cb.checked && idx !== -1) role.permissions.splice(idx, 1);
+            });
+            renderRoute();
+          } catch (err) {
+            showError('Couldn\u2019t update that permission. Please try again.');
+            cb.disabled = false;
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-delete-role]').forEach(function (btn) {
+        btn.addEventListener('click', async function () {
+          const roleId = btn.getAttribute('data-delete-role');
+          if (!confirm('Delete this role? Anyone assigned to it will lose admin access.')) return;
+          try {
+            await GroviaAPI.pushDb(function (draft) {
+              draft.roles = draft.roles.filter(function (r) { return r.id !== roleId; });
+              draft.users.forEach(function (u) { if (u.roleId === roleId) u.roleId = null; });
+            });
+            renderRoute();
+          } catch (err) { showError('Couldn\u2019t delete that role. Please try again.'); }
+        });
+      });
+
+      document.getElementById('create-role-btn').addEventListener('click', async function () {
+        const nameInput = document.getElementById('new-role-name');
+        const name = nameInput.value.trim();
+        if (!name) { showError('Give the new role a name.'); return; }
+        const perms = Array.from(document.querySelectorAll('#new-role-perms input:checked')).map(function (cb) { return cb.value; });
+        const btn = document.getElementById('create-role-btn');
+        btn.disabled = true; btn.textContent = 'Creating\u2026';
+        try {
+          await GroviaAPI.pushDb(function (draft) {
+            draft.roles.push({
+              id: crypto.randomUUID(), name: name, permissions: perms,
+              createdBy: cachedUser ? cachedUser.id : null, createdAt: new Date().toISOString(),
+            });
+          });
+          renderRoute();
+        } catch (err) {
+          showError('Couldn\u2019t create that role. Please try again.');
+          btn.disabled = false; btn.textContent = 'Create role';
+        }
+      });
+    },
+  };
+}
+
+/* ------------------------------------------------------------------ settings */
+async function viewSettings(db) {
+  const s = db.platformSettings || {};
+
+  const html =
+    '<div class="wrap">' +
+    '<h1 class="page-title">Platform settings</h1><p class="page-sub">Super Admin only \u2014 these affect every transaction on Grovia.</p>' +
+    '<div id="settings-alert" class="alert"></div>' +
+    '<div class="card">' +
+    '<div class="field-row-2">' +
+    field('platformCutPercent', 'Platform cut (%)', s.platformCutPercent) +
+    field('withdrawalMinimum', 'Withdrawal minimum (\u20a6)', s.withdrawalMinimum) +
+    '</div>' +
+    '<div class="field-row-2">' +
+    field('creatorYearlyFee', 'Creator yearly fee (\u20a6)', s.creatorYearlyFee) +
+    field('affiliateYearlyFee', 'Affiliate yearly fee (\u20a6)', s.affiliateYearlyFee) +
+    '</div>' +
+    '<div class="field-row-2">' +
+    field('commissionRateMin', 'Min commission rate (%)', s.commissionRateMin) +
+    field('commissionRateMax', 'Max commission rate (%)', s.commissionRateMax) +
+    '</div>' +
+    '<div class="field-row-2">' +
+    field('graceDays', 'Grace period (days)', s.graceDays) +
+    ('<div class="field"><label for="publicCatalogEnabled">Public catalog</label>' +
+      '<select id="publicCatalogEnabled"><option value="true"' + (s.publicCatalogEnabled ? ' selected' : '') + '>Enabled</option>' +
+      '<option value="false"' + (!s.publicCatalogEnabled ? ' selected' : '') + '>Disabled</option></select></div>') +
+    '</div>' +
+    '<div class="section-heading" style="margin-top:22px;">Referral program</div>' +
+    '<div class="field-row-2">' +
+    field('referralSignupBonus', 'Signup bonus (\u20a6)', s.referralSignupBonus) +
+    field('referralRenewalPercent', 'Renewal reward (%)', s.referralRenewalPercent) +
+    '</div>' +
+    ('<div class="field"><label for="referralProgramEnabled">Referral program</label>' +
+      '<select id="referralProgramEnabled"><option value="true"' + (s.referralProgramEnabled ? ' selected' : '') + '>Enabled</option>' +
+      '<option value="false"' + (!s.referralProgramEnabled ? ' selected' : '') + '>Disabled</option></select></div>') +
+    '<button class="btn btn-primary" id="save-settings-btn">Save settings</button>' +
+    '</div>' +
+    '</div>';
+
+  function field(id, label, value) {
+    return '<div class="field"><label for="' + id + '">' + escapeHtml(label) + '</label><input type="number" id="' + id + '" value="' + (value != null ? value : 0) + '" /></div>';
+  }
+
+  return {
+    html: html,
+    after: function () {
+      document.getElementById('save-settings-btn').addEventListener('click', async function () {
+        const btn = this;
+        function num(id) { return Number(document.getElementById(id).value); }
+        const updated = {
+          platformCutPercent: num('platformCutPercent'),
+          withdrawalMinimum: num('withdrawalMinimum'),
+          creatorYearlyFee: num('creatorYearlyFee'),
+          affiliateYearlyFee: num('affiliateYearlyFee'),
+          commissionRateMin: num('commissionRateMin'),
+          commissionRateMax: num('commissionRateMax'),
+          graceDays: num('graceDays'),
+          publicCatalogEnabled: document.getElementById('publicCatalogEnabled').value === 'true',
+          referralSignupBonus: num('referralSignupBonus'),
+          referralRenewalPercent: num('referralRenewalPercent'),
+          referralProgramEnabled: document.getElementById('referralProgramEnabled').value === 'true',
+        };
+        const el = document.getElementById('settings-alert');
+        if (updated.commissionRateMin > updated.commissionRateMax) {
+          el.textContent = 'Min commission rate can\u2019t be higher than the max.'; el.className = 'alert error';
+          return;
+        }
+        btn.disabled = true; btn.textContent = 'Saving\u2026';
+        try {
+          await GroviaAPI.pushDb(function (draft) {
+            draft.platformSettings = Object.assign({}, draft.platformSettings, updated);
+          });
+          el.textContent = 'Settings saved.'; el.className = 'alert info';
+          btn.disabled = false; btn.textContent = 'Save settings';
+        } catch (err) {
+          el.textContent = 'Couldn\u2019t save settings. Please try again.'; el.className = 'alert error';
+          btn.disabled = false; btn.textContent = 'Save settings';
+        }
+      });
+    },
+  };
+}
+</script>
+
+</body>
+</html>
